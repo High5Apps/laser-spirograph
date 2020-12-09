@@ -24,8 +24,8 @@ class ViewController: UIViewController {
         
         Timer.scheduledTimer(withTimeInterval: Self.refreshRate, repeats: true) { (_) in
             let t = Date().timeIntervalSince(startTime)
-            let newRotationalVeloctiy = max(0, 2 * Double.pi * Double(Int(t) % 16) - 0.1)
-            self.function.setRotationalVelocity(newRotationalVeloctiy, t: t)
+            let newRotationsPerSecond = max(0, Double(Int(t) % 16) - 0.1)
+            self.function.setRotationsPerSecond(newRotationsPerSecond, t: t)
             self.canvas.draw(time: t)
         }
     }

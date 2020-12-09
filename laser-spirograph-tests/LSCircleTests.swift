@@ -9,16 +9,15 @@ import XCTest
 
 class LSCircleTests: XCTestCase {
     
-    func testGetPointShouldBeContinuousThroughRotationalVelocityUpdate() throws {
+    func testGetPointShouldBeContinuousThroughRotationsPerSecondUpdate() throws {
         let circle = LSCircle()
         var time: Double = 0
         
-        for rpm in stride(from: 0, through: 10, by: 0.25) {
-            let newRotationalVelocity: Double = rpm * 2 * .pi
+        for rotationsPerSecond in stride(from: 0, through: 10, by: 0.25) {
             time += 1
             
             let initialPoint = circle.getPoint(t: time)
-            circle.setRotationalVelocity(newRotationalVelocity, t: time)
+            circle.setRotationsPerSecond(rotationsPerSecond, t: time)
             
             let newPoint = circle.getPoint(t: time)
             
