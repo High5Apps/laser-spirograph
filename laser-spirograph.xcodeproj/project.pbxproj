@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
+		C282867B25815BA3008B4D42 /* LSCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282867A25815BA3008B4D42 /* LSCircleTests.swift */; };
+		C282867E25815BF6008B4D42 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
+		C282868125815D64008B4D42 /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
 		C2C48438257710E100F17D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48437257710E100F17D7D /* AppDelegate.swift */; };
 		C2C4843A257710E100F17D7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48439257710E100F17D7D /* SceneDelegate.swift */; };
 		C2C4843C257710E100F17D7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4843B257710E100F17D7D /* ViewController.swift */; };
@@ -18,8 +21,21 @@
 		C2C484592577645100F17D7D /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C282867125815B58008B4D42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2C4842C257710E100F17D7D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2C48433257710E100F17D7D;
+			remoteInfo = "laser-spirograph";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		C204ED1E25805CAC0024F693 /* LSCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircle.swift; sourceTree = "<group>"; };
+		C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laser-spirograph-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C282867025815B58008B4D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C282867A25815BA3008B4D42 /* LSCircleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleTests.swift; sourceTree = "<group>"; };
 		C2C48434257710E100F17D7D /* laser-spirograph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "laser-spirograph.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C48437257710E100F17D7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2C48439257710E100F17D7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +49,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C282866925815B57008B4D42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2C48431257710E100F17D7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,10 +66,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C282866D25815B57008B4D42 /* laser-spirograph-tests */ = {
+			isa = PBXGroup;
+			children = (
+				C282867A25815BA3008B4D42 /* LSCircleTests.swift */,
+				C282867025815B58008B4D42 /* Info.plist */,
+			);
+			path = "laser-spirograph-tests";
+			sourceTree = "<group>";
+		};
 		C2C4842B257710E100F17D7D = {
 			isa = PBXGroup;
 			children = (
 				C2C48436257710E100F17D7D /* laser-spirograph */,
+				C282866D25815B57008B4D42 /* laser-spirograph-tests */,
 				C2C48435257710E100F17D7D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C2C48434257710E100F17D7D /* laser-spirograph.app */,
+				C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +137,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C282866B25815B57008B4D42 /* laser-spirograph-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C282867525815B58008B4D42 /* Build configuration list for PBXNativeTarget "laser-spirograph-tests" */;
+			buildPhases = (
+				C282866825815B57008B4D42 /* Sources */,
+				C282866925815B57008B4D42 /* Frameworks */,
+				C282866A25815B57008B4D42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C282867225815B58008B4D42 /* PBXTargetDependency */,
+			);
+			name = "laser-spirograph-tests";
+			productName = "laser-spirograph-tests";
+			productReference = C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C2C48433257710E100F17D7D /* laser-spirograph */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2C48448257710E600F17D7D /* Build configuration list for PBXNativeTarget "laser-spirograph" */;
@@ -129,6 +181,11 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					C282866B25815B57008B4D42 = {
+						CreatedOnToolsVersion = 12.0.1;
+						LastSwiftMigration = 1200;
+						TestTargetID = C2C48433257710E100F17D7D;
+					};
 					C2C48433257710E100F17D7D = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -148,11 +205,19 @@
 			projectRoot = "";
 			targets = (
 				C2C48433257710E100F17D7D /* laser-spirograph */,
+				C282866B25815B57008B4D42 /* laser-spirograph-tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C282866A25815B57008B4D42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2C48432257710E100F17D7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +231,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C282866825815B57008B4D42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C282868125815D64008B4D42 /* Parameterizable.swift in Sources */,
+				C282867E25815BF6008B4D42 /* LSCircle.swift in Sources */,
+				C282867B25815BA3008B4D42 /* LSCircleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2C48430257710E100F17D7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -180,6 +255,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C282867225815B58008B4D42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2C48433257710E100F17D7D /* laser-spirograph */;
+			targetProxy = C282867125815B58008B4D42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C2C4843D257710E100F17D7D /* Main.storyboard */ = {
@@ -201,6 +284,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C282867325815B58008B4D42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D9WEB32TK;
+				INFOPLIST_FILE = "laser-spirograph-tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.high5.laser-spirograph-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/laser-spirograph.app/laser-spirograph";
+			};
+			name = Debug;
+		};
+		C282867425815B58008B4D42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6D9WEB32TK;
+				INFOPLIST_FILE = "laser-spirograph-tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.high5.laser-spirograph-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/laser-spirograph.app/laser-spirograph";
+			};
+			name = Release;
+		};
 		C2C48446257710E600F17D7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -358,6 +484,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C282867525815B58008B4D42 /* Build configuration list for PBXNativeTarget "laser-spirograph-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C282867325815B58008B4D42 /* Debug */,
+				C282867425815B58008B4D42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C2C4842F257710E100F17D7D /* Build configuration list for PBXProject "laser-spirograph" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
