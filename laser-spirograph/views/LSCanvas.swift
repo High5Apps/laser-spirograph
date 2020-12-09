@@ -13,6 +13,7 @@ class LSCanvas: UIView {
     var parametricFunction: Parameterizable?
     
     private var shapeLayer: CAShapeLayer
+    private var pathTransform: CGAffineTransform = .identity
         
     private static let persistenceOfVision: TimeInterval = 1 / 16
     private static let stepSize: Double = persistenceOfVision / 32
@@ -32,6 +33,19 @@ class LSCanvas: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         shapeLayer.frame = bounds
+        pathTransform = getTransformFromUnitCircleToRect(bounds)
+    }
+    
+    private func getTransformFromUnitCircleToRect(_ rect: CGRect) -> CGAffineTransform {
+        let insetRect = rect.insetBy(dx: Self.semiLineWidth, dy: Self.semiLineWidth)
+        
+        let shiftAxesTransform = CGAffineTransform(translationX: 1, y: 1)
+
+        let radius: CGFloat = min(insetRect.size.height, insetRect.size.width) / 2
+        let scaleTransform = CGAffineTransform(scaleX: radius, y: radius)
+        
+        let strokeOffsetTransform = CGAffineTransform(translationX: Self.semiLineWidth, y: Self.semiLineWidth)
+        return shiftAxesTransform.concatenating(scaleTransform).concatenating(strokeOffsetTransform)
     }
         
     func draw(time: Double) {
@@ -39,33 +53,27 @@ class LSCanvas: UIView {
     }
     
     private func updateShapeLayer(_ time: Double) {
-        let insetRect = bounds.insetBy(dx: Self.semiLineWidth, dy: Self.semiLineWidth)
-
-        let path = UIBezierPath()
-        let t0 = time - Self.persistenceOfVision
-        path.move(to: getTransformedPoint(t: t0, rect: insetRect))
-        
-        for t in stride(from: t0 + Self.stepSize, through: time, by: Self.stepSize) {
-            path.addLine(to: getTransformedPoint(t: t, rect: insetRect))
+        guard let parametricFunction = parametricFunction else {
+            shapeLayer.path = nil
+            return
         }
         
+        let path = UIBezierPath()
+        
+        let t0 = time - Self.persistenceOfVision
+        path.move(to: getCGPoint(parametricFunction, t0))
+        
+        for t in stride(from: t0 + Self.stepSize, through: time, by: Self.stepSize) {
+            path.addLine(to: getCGPoint(parametricFunction, t))
+        }
+        
+        path.apply(pathTransform)
+
         shapeLayer.path = path.cgPath
     }
     
-    private func getTransformedPoint(t: Double, rect: CGRect) -> CGPoint {
-        let (x, y) = parametricFunction?.getPoint(t: t) ?? (0, 0)
-        let pointInUnitCircle = CGPoint(x: x, y: y)
-        return transformUnitCircle(point: pointInUnitCircle, toFit: rect)
-    }
-    
-    private func transformUnitCircle(point: CGPoint, toFit rect: CGRect) -> CGPoint {
-        let shiftAxesTransform = CGAffineTransform(translationX: 1, y: 1)
-
-        let radius: CGFloat = min(rect.height, rect.width) / 2
-        let scaleTransform = CGAffineTransform(scaleX: radius, y: radius)
-        
-        let strokeOffsetTransform = CGAffineTransform(translationX: Self.semiLineWidth, y: Self.semiLineWidth)
-
-        return point.applying(shiftAxesTransform).applying(scaleTransform).applying(strokeOffsetTransform)
+    private func getCGPoint(_ parametricFunction: Parameterizable, _ time: Double) -> CGPoint {
+        let (x, y) = parametricFunction.getPoint(t: time)
+        return CGPoint(x: x, y: y)
     }
 }
