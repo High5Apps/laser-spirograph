@@ -12,22 +12,34 @@ class LSCanvas: UIView {
     var color: UIColor = .green
     var parametricFunction: Parameterizable?
     
-    private var time: Double = 0
-    
+    private var shapeLayer: CAShapeLayer
+        
     private static let persistenceOfVision: TimeInterval = 1 / 16
     private static let stepSize: Double = persistenceOfVision / 32
     private static let lineWidth: CGFloat = 4
     private static let semiLineWidth: CGFloat = lineWidth / 2
     
-    func draw(time: Double) {
-        self.time = time
-        setNeedsDisplay()
+    required init?(coder: NSCoder) {
+        shapeLayer = CAShapeLayer()
+        super.init(coder: coder)
+        
+        shapeLayer.fillColor = nil
+        shapeLayer.lineWidth = Self.lineWidth
+        shapeLayer.strokeColor = color.cgColor
+        layer.addSublayer(shapeLayer)
     }
     
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        shapeLayer.frame = bounds
+    }
         
-        let insetRect = rect.insetBy(dx: Self.semiLineWidth, dy: Self.semiLineWidth)
+    func draw(time: Double) {
+        updateShapeLayer(time)
+    }
+    
+    private func updateShapeLayer(_ time: Double) {
+        let insetRect = bounds.insetBy(dx: Self.semiLineWidth, dy: Self.semiLineWidth)
 
         let path = UIBezierPath()
         let t0 = time - Self.persistenceOfVision
@@ -37,9 +49,7 @@ class LSCanvas: UIView {
             path.addLine(to: getTransformedPoint(t: t, rect: insetRect))
         }
         
-        path.lineWidth = Self.lineWidth
-        color.set()
-        path.stroke()
+        shapeLayer.path = path.cgPath
     }
     
     private func getTransformedPoint(t: Double, rect: CGRect) -> CGPoint {
