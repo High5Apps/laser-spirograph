@@ -9,7 +9,7 @@ import Foundation
 
 class LSCircle {
     
-    private var rotationsPerSecond: Double = 1
+    private var rotationsPerSecond: Double = 0
     private var radius: Double = 1
     private var phase: Double = 0
     
@@ -32,7 +32,6 @@ extension LSCircle: Parameterizable {
     func getPoint(t: Double) -> (x: Double, y: Double) {
         let x = radius * cos(Self.radiansInCircle * rotationsPerSecond * t + phase)
         let y = radius * sin(Self.radiansInCircle * rotationsPerSecond * t + phase)
-        
         return (x, y)
     }
 }

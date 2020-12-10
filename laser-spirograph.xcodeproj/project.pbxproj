@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		00DEB81A6FB400E90022E5E6 /* Pods_laser_spirograph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0649B35AFB32C835B1F91D80 /* Pods_laser_spirograph.framework */; };
 		2C07673E9C263EA5906B3754 /* Pods_laser_spirograph_tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64A78598698828BAC0EC36D /* Pods_laser_spirograph_tests.framework */; };
 		C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
+		C26009D82582BA2E00278867 /* LSMultisliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26009D72582BA2E00278867 /* LSMultisliderView.swift */; };
 		C282867B25815BA3008B4D42 /* LSCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282867A25815BA3008B4D42 /* LSCircleTests.swift */; };
 		C282867E25815BF6008B4D42 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
 		C282868125815D64008B4D42 /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
@@ -41,6 +42,7 @@
 		A1C947429D4188894A7ED066 /* Pods-laser-spirograph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-laser-spirograph.debug.xcconfig"; path = "Target Support Files/Pods-laser-spirograph/Pods-laser-spirograph.debug.xcconfig"; sourceTree = "<group>"; };
 		A64A78598698828BAC0EC36D /* Pods_laser_spirograph_tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_laser_spirograph_tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C204ED1E25805CAC0024F693 /* LSCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircle.swift; sourceTree = "<group>"; };
+		C26009D72582BA2E00278867 /* LSMultisliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSMultisliderView.swift; sourceTree = "<group>"; };
 		C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laser-spirograph-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C282867025815B58008B4D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C282867A25815BA3008B4D42 /* LSCircleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleTests.swift; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 				528336E576D0B89BC8AE34FA /* Pods-laser-spirograph-tests.debug.xcconfig */,
 				4FD09EEF34298BB782783FDC /* Pods-laser-spirograph-tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -146,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				C2C4844C257711E000F17D7D /* LSCanvas.swift */,
+				C26009D72582BA2E00278867 /* LSMultisliderView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -347,6 +349,7 @@
 			files = (
 				C2C4843C257710E100F17D7D /* ViewController.swift in Sources */,
 				C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */,
+				C26009D82582BA2E00278867 /* LSMultisliderView.swift in Sources */,
 				C2C484592577645100F17D7D /* Parameterizable.swift in Sources */,
 				C2C48438257710E100F17D7D /* AppDelegate.swift in Sources */,
 				C2C4843A257710E100F17D7D /* SceneDelegate.swift in Sources */,

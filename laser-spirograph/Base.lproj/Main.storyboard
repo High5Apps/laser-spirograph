@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,17 +23,25 @@
                                     <constraint firstAttribute="width" secondItem="XtC-eS-Moq" secondAttribute="height" multiplier="1:1" id="2Va-rr-Gwb"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MwB-2R-Yc4" customClass="LSMultisliderView" customModule="laser_spirograph" customModuleProvider="target">
+                                <rect key="frame" x="16" y="458" width="382" height="388"/>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="MwB-2R-Yc4" firstAttribute="top" secondItem="XtC-eS-Moq" secondAttribute="bottom" constant="16" id="11B-LF-z7x"/>
+                            <constraint firstItem="MwB-2R-Yc4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="5TH-PF-YCb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MwB-2R-Yc4" secondAttribute="bottom" constant="16" id="D8l-Ex-kXS"/>
                             <constraint firstItem="XtC-eS-Moq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Nx5-KL-P9o"/>
                             <constraint firstItem="XtC-eS-Moq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ORg-I1-Pap"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XtC-eS-Moq" secondAttribute="trailing" constant="16" id="c6I-BO-1Ul"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MwB-2R-Yc4" secondAttribute="trailing" constant="16" id="lfU-X5-IMO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="canvas" destination="XtC-eS-Moq" id="pFt-tj-SbV"/>
+                        <outlet property="multisliderView" destination="MwB-2R-Yc4" id="5L5-HW-gIa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
