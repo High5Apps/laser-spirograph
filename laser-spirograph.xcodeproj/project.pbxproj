@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00DEB81A6FB400E90022E5E6 /* Pods_laser_spirograph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0649B35AFB32C835B1F91D80 /* Pods_laser_spirograph.framework */; };
+		2C07673E9C263EA5906B3754 /* Pods_laser_spirograph_tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64A78598698828BAC0EC36D /* Pods_laser_spirograph_tests.framework */; };
 		C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
 		C282867B25815BA3008B4D42 /* LSCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282867A25815BA3008B4D42 /* LSCircleTests.swift */; };
 		C282867E25815BF6008B4D42 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
@@ -32,6 +34,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0649B35AFB32C835B1F91D80 /* Pods_laser_spirograph.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_laser_spirograph.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FD09EEF34298BB782783FDC /* Pods-laser-spirograph-tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-laser-spirograph-tests.release.xcconfig"; path = "Target Support Files/Pods-laser-spirograph-tests/Pods-laser-spirograph-tests.release.xcconfig"; sourceTree = "<group>"; };
+		528336E576D0B89BC8AE34FA /* Pods-laser-spirograph-tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-laser-spirograph-tests.debug.xcconfig"; path = "Target Support Files/Pods-laser-spirograph-tests/Pods-laser-spirograph-tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7EABD27C8429EC1290A9DA1B /* Pods-laser-spirograph.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-laser-spirograph.release.xcconfig"; path = "Target Support Files/Pods-laser-spirograph/Pods-laser-spirograph.release.xcconfig"; sourceTree = "<group>"; };
+		A1C947429D4188894A7ED066 /* Pods-laser-spirograph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-laser-spirograph.debug.xcconfig"; path = "Target Support Files/Pods-laser-spirograph/Pods-laser-spirograph.debug.xcconfig"; sourceTree = "<group>"; };
+		A64A78598698828BAC0EC36D /* Pods_laser_spirograph_tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_laser_spirograph_tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C204ED1E25805CAC0024F693 /* LSCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircle.swift; sourceTree = "<group>"; };
 		C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laser-spirograph-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C282867025815B58008B4D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C07673E9C263EA5906B3754 /* Pods_laser_spirograph_tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +69,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00DEB81A6FB400E90022E5E6 /* Pods_laser_spirograph.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6301975AB7A85523EA23790A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1C947429D4188894A7ED066 /* Pods-laser-spirograph.debug.xcconfig */,
+				7EABD27C8429EC1290A9DA1B /* Pods-laser-spirograph.release.xcconfig */,
+				528336E576D0B89BC8AE34FA /* Pods-laser-spirograph-tests.debug.xcconfig */,
+				4FD09EEF34298BB782783FDC /* Pods-laser-spirograph-tests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C282866D25815B57008B4D42 /* laser-spirograph-tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +103,8 @@
 				C2C48436257710E100F17D7D /* laser-spirograph */,
 				C282866D25815B57008B4D42 /* laser-spirograph-tests */,
 				C2C48435257710E100F17D7D /* Products */,
+				6301975AB7A85523EA23790A /* Pods */,
+				D31240A2C624CFAEF34CC359 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +158,15 @@
 			path = controllers;
 			sourceTree = "<group>";
 		};
+		D31240A2C624CFAEF34CC359 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0649B35AFB32C835B1F91D80 /* Pods_laser_spirograph.framework */,
+				A64A78598698828BAC0EC36D /* Pods_laser_spirograph_tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +174,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C282867525815B58008B4D42 /* Build configuration list for PBXNativeTarget "laser-spirograph-tests" */;
 			buildPhases = (
+				62FA07B4CCB410D95B5DA48D /* [CP] Check Pods Manifest.lock */,
 				C282866825815B57008B4D42 /* Sources */,
 				C282866925815B57008B4D42 /* Frameworks */,
 				C282866A25815B57008B4D42 /* Resources */,
@@ -159,9 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2C48448257710E600F17D7D /* Build configuration list for PBXNativeTarget "laser-spirograph" */;
 			buildPhases = (
+				3CC1C85A21354E3C72FE7321 /* [CP] Check Pods Manifest.lock */,
 				C2C48430257710E100F17D7D /* Sources */,
 				C2C48431257710E100F17D7D /* Frameworks */,
 				C2C48432257710E100F17D7D /* Resources */,
+				324227671CE71A62ECA606FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,6 +266,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		324227671CE71A62ECA606FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-laser-spirograph/Pods-laser-spirograph-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-laser-spirograph/Pods-laser-spirograph-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-laser-spirograph/Pods-laser-spirograph-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CC1C85A21354E3C72FE7321 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-laser-spirograph-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62FA07B4CCB410D95B5DA48D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-laser-spirograph-tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C282866825815B57008B4D42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -286,6 +386,7 @@
 /* Begin XCBuildConfiguration section */
 		C282867325815B58008B4D42 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 528336E576D0B89BC8AE34FA /* Pods-laser-spirograph-tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -308,6 +409,7 @@
 		};
 		C282867425815B58008B4D42 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FD09EEF34298BB782783FDC /* Pods-laser-spirograph-tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -445,6 +547,7 @@
 		};
 		C2C48449257710E600F17D7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1C947429D4188894A7ED066 /* Pods-laser-spirograph.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -464,6 +567,7 @@
 		};
 		C2C4844A257710E600F17D7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EABD27C8429EC1290A9DA1B /* Pods-laser-spirograph.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

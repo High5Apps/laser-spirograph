@@ -1,0 +1,6 @@
+framework module Pods_laser_spirograph_tests {
+  umbrella header "Pods-laser-spirograph-tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
