@@ -25,6 +25,7 @@
 		C2C48444257710E600F17D7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2C48442257710E600F17D7D /* LaunchScreen.storyboard */; };
 		C2C4844D257711E000F17D7D /* LSCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4844C257711E000F17D7D /* LSCanvas.swift */; };
 		C2C484592577645100F17D7D /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
+		C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		C2C48445257710E600F17D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2C4844C257711E000F17D7D /* LSCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCanvas.swift; sourceTree = "<group>"; };
 		C2C484582577645100F17D7D /* Parameterizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameterizable.swift; sourceTree = "<group>"; };
+		C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSConstantFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				C204ED1E25805CAC0024F693 /* LSCircle.swift */,
+				C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */,
 				C23084242582EB090042EBCA /* LSFunctionComposer.swift */,
 				C2C484582577645100F17D7D /* Parameterizable.swift */,
 			);
@@ -363,6 +366,7 @@
 				C2C484592577645100F17D7D /* Parameterizable.swift in Sources */,
 				C2C48438257710E100F17D7D /* AppDelegate.swift in Sources */,
 				C2C4843A257710E100F17D7D /* SceneDelegate.swift in Sources */,
+				C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */,
 				C2C4844D257711E000F17D7D /* LSCanvas.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

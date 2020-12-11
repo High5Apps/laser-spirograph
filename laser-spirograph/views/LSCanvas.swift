@@ -10,9 +10,9 @@ import UIKit
 class LSCanvas: UIView {
     
     var color: UIColor = .green
-    var parametricFunction: Parameterizable?
+    var parametricFunction: Parameterizable = LSConstantFunction(x: 1, y: 0)
     
-    private var shapeLayer: CAShapeLayer
+    private let shapeLayer = CAShapeLayer()
     private var pathTransform: CGAffineTransform = .identity
         
     private static let persistenceOfVision: TimeInterval = 1 / 16
@@ -21,7 +21,6 @@ class LSCanvas: UIView {
     private static let semiLineWidth: CGFloat = lineWidth / 2
     
     required init?(coder: NSCoder) {
-        shapeLayer = CAShapeLayer()
         super.init(coder: coder)
         
         shapeLayer.fillColor = nil
@@ -53,11 +52,6 @@ class LSCanvas: UIView {
     }
     
     private func updateShapeLayer(_ time: Double) {
-        guard let parametricFunction = parametricFunction else {
-            shapeLayer.path = nil
-            return
-        }
-        
         let path = UIBezierPath()
         
         let t0 = time - Self.persistenceOfVision
