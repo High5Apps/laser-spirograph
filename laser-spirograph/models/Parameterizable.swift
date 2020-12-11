@@ -7,6 +7,7 @@
 
 import Foundation
 
-protocol Parameterizable {
+protocol Parameterizable: AnyObject {
     func getPoint(t: Double) -> (x: Double, y: Double)
+    func isConstant() -> Bool
 }

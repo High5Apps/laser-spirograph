@@ -25,4 +25,14 @@ class LSCircleTests: XCTestCase {
             XCTAssertEqual(initialPoint.y, newPoint.y, accuracy: 1e-6)
         }
     }
+    
+    func testIsConstantShouldBeTrueWhenRotationsPerSecondZero() throws {
+        let circle = LSCircle()
+        
+        circle.setRotationsPerSecond(0, t: 1)
+        XCTAssert(circle.isConstant())
+        
+        circle.setRotationsPerSecond(1e-6, t: 1)
+        XCTAssert(!circle.isConstant())
+    }
 }

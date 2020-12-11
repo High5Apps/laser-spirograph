@@ -34,4 +34,6 @@ extension LSCircle: Parameterizable {
         let y = radius * sin(Self.radiansInCircle * rotationsPerSecond * t + phase)
         return (x, y)
     }
+    
+    func isConstant() -> Bool { rotationsPerSecond == 0 }
 }

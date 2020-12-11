@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var multisliderView: LSMultisliderView!
     
-    private var function = LSCircle()
+    private var functions = [LSCircle]()
     private var elapsedTime: TimeInterval { Date().timeIntervalSince(startTime) }
     
     private lazy var startTime = Date()
@@ -27,7 +27,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        canvas.parametricFunction = function
+        for _ in 0..<4 {
+            functions.append(LSCircle())
+        }
+        
+        canvas.parametricFunction = LSFunctionComposer(functions)
         
         multisliderView.maxValue = Self.maxRotationsPerSecond
         multisliderView.delegate = self
@@ -43,10 +47,6 @@ class ViewController: UIViewController {
 extension ViewController: LSMultisliderViewDelegate {
     
     func multisliderView(_ sender: LSMultisliderView, didChange value: Float, at index: Int) {
-        if index == 0 {
-            function.setRotationsPerSecond(Double(value), t: elapsedTime)
-        } else {
-            print("\(index): \(value)")
-        }
+        functions[index].setRotationsPerSecond(Double(value), t: elapsedTime)
     }
 }
