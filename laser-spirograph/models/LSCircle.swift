@@ -9,11 +9,22 @@ import Foundation
 
 class LSCircle {
     
+    // MARK: Properties
+    
     private var rotationsPerSecond: Double = 0
-    private var radius: Double = 1
     private var phase: Double = 0
     
+    private let radius: Double
+    
     private static let radiansInCircle: Double = 2 * .pi
+    
+    // MARK: Initialization
+    
+    init(radius: Double) {
+        self.radius = radius
+    }
+    
+    // MARK: Rotational velocity updating
     
     func setRotationsPerSecond(_ newRotationsPerSecond: Double, t: Double) {
         guard newRotationsPerSecond != rotationsPerSecond else { return }
@@ -26,6 +37,8 @@ class LSCircle {
         rotationsPerSecond = newRotationsPerSecond
     }
 }
+
+// MARK: Parameterizable
 
 extension LSCircle: Parameterizable {
     

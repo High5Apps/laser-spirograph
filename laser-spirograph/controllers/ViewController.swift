@@ -14,24 +14,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var multisliderView: LSMultisliderView!
     
-    private var functions = [LSCircle]()
+    private var circleCombiner = LSCircleCombiner(radii: radii)!
     private var elapsedTime: TimeInterval { Date().timeIntervalSince(startTime) }
     
     private lazy var startTime = Date()
     
     private static let refreshRate: Double = 1 / 24
     private static let maxRotationsPerSecond: Float = 16
+    private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
     
     // MARK: Initialization
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for _ in 0..<4 {
-            functions.append(LSCircle())
-        }
-        
-        canvas.parametricFunction = LSFunctionComposer(functions)
+        canvas.parametricFunction = circleCombiner
         
         multisliderView.maxValue = Self.maxRotationsPerSecond
         multisliderView.delegate = self
@@ -47,6 +44,6 @@ class ViewController: UIViewController {
 extension ViewController: LSMultisliderViewDelegate {
     
     func multisliderView(_ sender: LSMultisliderView, didChange value: Float, at index: Int) {
-        functions[index].setRotationsPerSecond(Double(value), t: elapsedTime)
+        circleCombiner.circles[index].setRotationsPerSecond(Double(value), t: elapsedTime)
     }
 }
