@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     private static let refreshRate: Double = 1 / 24
     private static let maxRotationsPerSecond: Float = pow(2, 7)
     private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
+    private static let persistenceOfVision: TimeInterval = 1 / 16
+    private static let stepCount: Int = 256
     
     // MARK: Initialization
 
@@ -36,7 +38,8 @@ class ViewController: UIViewController {
         multisliderView.delegate = self
                 
         Timer.scheduledTimer(withTimeInterval: Self.refreshRate, repeats: true) { (_) in
-            self.canvas.draw(time: self.elapsedTime)
+            let currentTime = self.elapsedTime
+            self.canvas.draw(startTime: currentTime - Self.persistenceOfVision, endTime: currentTime, stepCount: Self.stepCount)
         }
     }
     
