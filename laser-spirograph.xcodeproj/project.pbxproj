@@ -135,8 +135,8 @@
 				C2C484602577659F00F17D7D /* models */,
 				C2C48462257765AE00F17D7D /* views */,
 				C2C4843D257710E100F17D7D /* Main.storyboard */,
-				C2C48440257710E600F17D7D /* Assets.xcassets */,
 				C2C48442257710E600F17D7D /* LaunchScreen.storyboard */,
+				C2C48440257710E600F17D7D /* Assets.xcassets */,
 				C2C48445257710E600F17D7D /* Info.plist */,
 			);
 			path = "laser-spirograph";
