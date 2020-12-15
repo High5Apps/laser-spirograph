@@ -16,7 +16,7 @@ class LSCanvas: UIView {
     private var pathTransform: CGAffineTransform = .identity
         
     private static let persistenceOfVision: TimeInterval = 1 / 16
-    private static let stepSize: Double = persistenceOfVision / 32
+    private static let stepSize: Double = persistenceOfVision / pow(2, 8)
     private static let lineWidth: CGFloat = 4
     private static let semiLineWidth: CGFloat = lineWidth / 2
     

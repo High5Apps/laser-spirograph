@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private lazy var startTime = Date()
     
     private static let refreshRate: Double = 1 / 24
-    private static let maxRotationsPerSecond: Float = 16
+    private static let maxRotationsPerSecond: Float = pow(2, 7)
     private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
     
     // MARK: Initialization
