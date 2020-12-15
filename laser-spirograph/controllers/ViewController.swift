@@ -49,6 +49,27 @@ class ViewController: UIViewController {
         super.viewWillDisappear(animated)
         UIApplication.shared.isIdleTimerDisabled = false
     }
+    
+    // MARK: Loading presets
+    
+    @IBAction func presetsButtonPressed(_ sender: Any) {
+        print("presets")
+    }
+    
+    
+    // MARK: Rewinding
+    
+    @IBAction func rewindButtonPressed(_ sender: Any) {
+        print("rewind")
+    }
+    
+    
+    // MARK: Saving
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        print("save")
+    }
+    
 }
 
 // MARK: LSMultisliderViewDelegate

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,27 +18,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-eS-Moq" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
-                                <rect key="frame" x="16" y="60" width="382" height="382"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ine-yq-PlL">
+                                <rect key="frame" x="16" y="60" width="382" height="770"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-eS-Moq" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="XtC-eS-Moq" secondAttribute="height" multiplier="1:1" id="2Va-rr-Gwb"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-hZ-035">
+                                        <rect key="frame" x="64" y="398" width="254.5" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQV-aS-N1f" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="EjQ-qL-mkY"/>
+                                                    <constraint firstAttribute="width" constant="50" id="kim-S6-0SM"/>
+                                                </constraints>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="gobackward.10" catalog="system" symbolScale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rewindButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jww-ne-AmM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-IS-NVL" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
+                                                <rect key="frame" x="102" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="HuW-jI-bJw"/>
+                                                    <constraint firstAttribute="height" constant="50" id="pjV-cF-8rU"/>
+                                                </constraints>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="presetsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HAY-eU-zWo"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5m-RT-IIf" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
+                                                <rect key="frame" x="204.5" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="0qe-Wm-z5K"/>
+                                                    <constraint firstAttribute="height" constant="50" id="ElE-BS-iZd"/>
+                                                </constraints>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H7h-O5-lUj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MwB-2R-Yc4" customClass="LSMultisliderView" customModule="laser_spirograph" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="464" width="350" height="306"/>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="XtC-eS-Moq" secondAttribute="height" multiplier="1:1" id="2Va-rr-Gwb"/>
+                                    <constraint firstAttribute="trailing" secondItem="MwB-2R-Yc4" secondAttribute="trailing" constant="16" id="AXD-AT-FN6"/>
+                                    <constraint firstItem="XtC-eS-Moq" firstAttribute="leading" secondItem="ine-yq-PlL" secondAttribute="leading" id="BOu-OY-1Ac"/>
+                                    <constraint firstItem="wG3-hZ-035" firstAttribute="width" secondItem="ine-yq-PlL" secondAttribute="width" multiplier="0.75" constant="-32" id="NbC-si-8UQ"/>
+                                    <constraint firstItem="MwB-2R-Yc4" firstAttribute="leading" secondItem="ine-yq-PlL" secondAttribute="leading" constant="16" id="gKY-xA-vm5"/>
+                                    <constraint firstAttribute="trailing" secondItem="XtC-eS-Moq" secondAttribute="trailing" id="sgY-wB-fbi"/>
                                 </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MwB-2R-Yc4" customClass="LSMultisliderView" customModule="laser_spirograph" customModuleProvider="target">
-                                <rect key="frame" x="32" y="458" width="350" height="372"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MwB-2R-Yc4" firstAttribute="top" secondItem="XtC-eS-Moq" secondAttribute="bottom" constant="16" id="11B-LF-z7x"/>
-                            <constraint firstItem="MwB-2R-Yc4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="5TH-PF-YCb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MwB-2R-Yc4" secondAttribute="bottom" constant="32" id="D8l-Ex-kXS"/>
-                            <constraint firstItem="XtC-eS-Moq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Nx5-KL-P9o"/>
-                            <constraint firstItem="XtC-eS-Moq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ORg-I1-Pap"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XtC-eS-Moq" secondAttribute="trailing" constant="16" id="c6I-BO-1Ul"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MwB-2R-Yc4" secondAttribute="trailing" constant="32" id="lfU-X5-IMO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ine-yq-PlL" secondAttribute="bottom" constant="32" id="LsH-ed-zdY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ine-yq-PlL" secondAttribute="trailing" constant="16" id="deQ-aT-PhZ"/>
+                            <constraint firstItem="ine-yq-PlL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="qf2-17-l67"/>
+                            <constraint firstItem="ine-yq-PlL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="y08-eB-Phb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -51,8 +108,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gobackward.10" catalog="system" width="121" height="128"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -17,6 +17,7 @@
 		C282867B25815BA3008B4D42 /* LSCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282867A25815BA3008B4D42 /* LSCircleTests.swift */; };
 		C282867E25815BF6008B4D42 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
 		C282868125815D64008B4D42 /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
+		C2C432CD258950FE00FBECE4 /* LSCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C432CC258950FE00FBECE4 /* LSCircleButton.swift */; };
 		C2C48438257710E100F17D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48437257710E100F17D7D /* AppDelegate.swift */; };
 		C2C4843A257710E100F17D7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48439257710E100F17D7D /* SceneDelegate.swift */; };
 		C2C4843C257710E100F17D7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4843B257710E100F17D7D /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 		C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laser-spirograph-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C282867025815B58008B4D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C282867A25815BA3008B4D42 /* LSCircleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleTests.swift; sourceTree = "<group>"; };
+		C2C432CC258950FE00FBECE4 /* LSCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleButton.swift; sourceTree = "<group>"; };
 		C2C48434257710E100F17D7D /* laser-spirograph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "laser-spirograph.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C48437257710E100F17D7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2C48439257710E100F17D7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				C2C4844C257711E000F17D7D /* LSCanvas.swift */,
+				C2C432CC258950FE00FBECE4 /* LSCircleButton.swift */,
 				C26009D72582BA2E00278867 /* LSMultisliderView.swift */,
 			);
 			path = views;
@@ -365,6 +368,7 @@
 				C2559A63258455BE00CB95BB /* LSCircleCombiner.swift in Sources */,
 				C2C484592577645100F17D7D /* Parameterizable.swift in Sources */,
 				C2C48438257710E100F17D7D /* AppDelegate.swift in Sources */,
+				C2C432CD258950FE00FBECE4 /* LSCircleButton.swift in Sources */,
 				C2C4843A257710E100F17D7D /* SceneDelegate.swift in Sources */,
 				C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */,
 				C2C4844D257711E000F17D7D /* LSCanvas.swift in Sources */,
