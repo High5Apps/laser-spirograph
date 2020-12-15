@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     
     // MARK: Properties
     
+    override var prefersStatusBarHidden: Bool { true }
+    
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var multisliderView: LSMultisliderView!
     
