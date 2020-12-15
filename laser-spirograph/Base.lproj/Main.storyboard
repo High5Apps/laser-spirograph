@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,19 +24,19 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MwB-2R-Yc4" customClass="LSMultisliderView" customModule="laser_spirograph" customModuleProvider="target">
-                                <rect key="frame" x="16" y="458" width="382" height="388"/>
+                                <rect key="frame" x="32" y="458" width="350" height="372"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MwB-2R-Yc4" firstAttribute="top" secondItem="XtC-eS-Moq" secondAttribute="bottom" constant="16" id="11B-LF-z7x"/>
-                            <constraint firstItem="MwB-2R-Yc4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="5TH-PF-YCb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MwB-2R-Yc4" secondAttribute="bottom" constant="16" id="D8l-Ex-kXS"/>
+                            <constraint firstItem="MwB-2R-Yc4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="5TH-PF-YCb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MwB-2R-Yc4" secondAttribute="bottom" constant="32" id="D8l-Ex-kXS"/>
                             <constraint firstItem="XtC-eS-Moq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Nx5-KL-P9o"/>
                             <constraint firstItem="XtC-eS-Moq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ORg-I1-Pap"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XtC-eS-Moq" secondAttribute="trailing" constant="16" id="c6I-BO-1Ul"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MwB-2R-Yc4" secondAttribute="trailing" constant="16" id="lfU-X5-IMO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MwB-2R-Yc4" secondAttribute="trailing" constant="32" id="lfU-X5-IMO"/>
                         </constraints>
                     </view>
                     <connections>
