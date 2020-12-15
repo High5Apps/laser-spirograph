@@ -39,10 +39,10 @@
                                                     <constraint firstAttribute="width" constant="50" id="kim-S6-0SM"/>
                                                 </constraints>
                                                 <state key="normal">
-                                                    <imageReference key="image" image="gobackward.10" catalog="system" symbolScale="large"/>
+                                                    <imageReference key="image" image="paintpalette" catalog="system" symbolScale="large"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="rewindButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jww-ne-AmM"/>
+                                                    <action selector="colorPickerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jww-ne-AmM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-IS-NVL" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
@@ -108,8 +108,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gobackward.10" catalog="system" width="121" height="128"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="paintpalette" catalog="system" width="128" height="105"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -53,26 +53,23 @@ class ViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = false
     }
     
-    // MARK: Loading presets
+    // MARK: Color picking
+    
+    @IBAction func colorPickerButtonPressed(_ sender: Any) {
+        print("color")
+    }
+    
+    // MARK: Preset loading
     
     @IBAction func presetsButtonPressed(_ sender: Any) {
         print("presets")
     }
-    
-    
-    // MARK: Rewinding
-    
-    @IBAction func rewindButtonPressed(_ sender: Any) {
-        print("rewind")
-    }
-    
     
     // MARK: Saving
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         print("save")
     }
-    
 }
 
 // MARK: LSMultisliderViewDelegate
