@@ -10,7 +10,7 @@ import XCTest
 class LSCircleTests: XCTestCase {
     
     func testGetPointShouldBeContinuousThroughRotationsPerSecondUpdate() throws {
-        let circle = LSCircle()
+        let circle = LSCircle(radius: 1)
         var time: Double = 0
         
         for rotationsPerSecond in stride(from: 0, through: 10, by: 0.25) {
@@ -27,7 +27,7 @@ class LSCircleTests: XCTestCase {
     }
     
     func testIsConstantShouldBeTrueWhenRotationsPerSecondZero() throws {
-        let circle = LSCircle()
+        let circle = LSCircle(radius: 1)
         
         circle.setRotationsPerSecond(0, t: 1)
         XCTAssert(circle.isConstant())
