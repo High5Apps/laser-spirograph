@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
     
     // MARK: Properties
+    
+    var managedObjectContext: NSManagedObjectContext?
     
     override var prefersStatusBarHidden: Bool { true }
     
@@ -68,7 +71,22 @@ class ViewController: UIViewController {
     // MARK: Saving
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        print("save")
+        guard let context = managedObjectContext else {
+            let alert = UIAlertController.okAlert(title: "Failed to save spiral", message: "Couldn't connect to database")
+            present(alert, animated: true)
+            return
+        }
+        
+        let endTime = elapsedTime
+        let startTime = endTime - Self.persistenceOfVision
+        let rotationsPerSeconds = circleCombiner.circles.map() { $0.rotationsPerSecond }
+        let phases = circleCombiner.circles.map() { $0.phase }
+        
+        let parameterSet = LSParameterSet(context: context, startTime: startTime, endTime: endTime, rotationsPerSeconds: rotationsPerSeconds, phases: phases)
+        parameterSet.save() { (error) in
+            let alert = UIAlertController.okAlert(title: "Failed to save spiral", message: error.localizedDescription)
+            self.present(alert, animated: true)
+        }
     }
 }
 

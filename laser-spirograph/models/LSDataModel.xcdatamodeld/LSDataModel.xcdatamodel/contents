@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LSParameterSet" representedClassName="LSParameterSet" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endTime" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="100"/>
+        <attribute name="phase0" attributeType="Double" minValueString="0" maxValueString="6.2832" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="phase1" attributeType="Double" minValueString="0" maxValueString="6.2832" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="phase2" attributeType="Double" minValueString="0" maxValueString="6.2832" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="phase3" attributeType="Double" minValueString="0" maxValueString="6.2832" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rotationsPerSecond0" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rotationsPerSecond1" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rotationsPerSecond2" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rotationsPerSecond3" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="startTime" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="LSParameterSet" positionX="-63" positionY="-18" width="128" height="223"/>
+    </elements>
+</model>

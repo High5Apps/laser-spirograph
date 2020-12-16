@@ -17,6 +17,7 @@
 		C282867B25815BA3008B4D42 /* LSCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282867A25815BA3008B4D42 /* LSCircleTests.swift */; };
 		C282867E25815BF6008B4D42 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
 		C282868125815D64008B4D42 /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
+		C2C2335525897D2300CA5E44 /* LSDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C2C2335325897D2300CA5E44 /* LSDataModel.xcdatamodeld */; };
 		C2C432CD258950FE00FBECE4 /* LSCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C432CC258950FE00FBECE4 /* LSCircleButton.swift */; };
 		C2C48438257710E100F17D7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48437257710E100F17D7D /* AppDelegate.swift */; };
 		C2C4843A257710E100F17D7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48439257710E100F17D7D /* SceneDelegate.swift */; };
@@ -26,6 +27,8 @@
 		C2C48444257710E600F17D7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2C48442257710E600F17D7D /* LaunchScreen.storyboard */; };
 		C2C4844D257711E000F17D7D /* LSCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4844C257711E000F17D7D /* LSCanvas.swift */; };
 		C2C484592577645100F17D7D /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
+		C2DA400F258AC47F00293577 /* LSParameterSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */; };
+		C2DA4030258AD0FC00293577 /* UIAlertController+CommonAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */; };
 		C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,7 @@
 		C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laser-spirograph-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C282867025815B58008B4D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C282867A25815BA3008B4D42 /* LSCircleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleTests.swift; sourceTree = "<group>"; };
+		C2C2335425897D2300CA5E44 /* LSDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LSDataModel.xcdatamodel; sourceTree = "<group>"; };
 		C2C432CC258950FE00FBECE4 /* LSCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleButton.swift; sourceTree = "<group>"; };
 		C2C48434257710E100F17D7D /* laser-spirograph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "laser-spirograph.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C48437257710E100F17D7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 		C2C48445257710E600F17D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2C4844C257711E000F17D7D /* LSCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCanvas.swift; sourceTree = "<group>"; };
 		C2C484582577645100F17D7D /* Parameterizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameterizable.swift; sourceTree = "<group>"; };
+		C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSParameterSet+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+CommonAlerts.swift"; sourceTree = "<group>"; };
 		C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSConstantFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +156,8 @@
 				C204ED1E25805CAC0024F693 /* LSCircle.swift */,
 				C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */,
 				C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */,
+				C2C2335325897D2300CA5E44 /* LSDataModel.xcdatamodeld */,
+				C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */,
 				C2C484582577645100F17D7D /* Parameterizable.swift */,
 			);
 			path = models;
@@ -169,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				C2C4843B257710E100F17D7D /* ViewController.swift */,
+				C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -363,13 +372,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2C4843C257710E100F17D7D /* ViewController.swift in Sources */,
+				C2DA400F258AC47F00293577 /* LSParameterSet+CoreDataClass.swift in Sources */,
 				C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */,
 				C26009D82582BA2E00278867 /* LSMultisliderView.swift in Sources */,
+				C2DA4030258AD0FC00293577 /* UIAlertController+CommonAlerts.swift in Sources */,
 				C2559A63258455BE00CB95BB /* LSCircleCombiner.swift in Sources */,
 				C2C484592577645100F17D7D /* Parameterizable.swift in Sources */,
 				C2C48438257710E100F17D7D /* AppDelegate.swift in Sources */,
 				C2C432CD258950FE00FBECE4 /* LSCircleButton.swift in Sources */,
 				C2C4843A257710E100F17D7D /* SceneDelegate.swift in Sources */,
+				C2C2335525897D2300CA5E44 /* LSDataModel.xcdatamodeld in Sources */,
 				C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */,
 				C2C4844D257711E000F17D7D /* LSCanvas.swift in Sources */,
 			);
@@ -637,6 +649,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C2C2335325897D2300CA5E44 /* LSDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C2C2335425897D2300CA5E44 /* LSDataModel.xcdatamodel */,
+			);
+			currentVersion = C2C2335425897D2300CA5E44 /* LSDataModel.xcdatamodel */;
+			path = LSDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C2C4842C257710E100F17D7D /* Project object */;
 }

@@ -17,6 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         window?.overrideUserInterfaceStyle = .dark
+        window?.makeKeyAndVisible()
+        
+        guard let viewController = window?.rootViewController as? ViewController, let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        viewController.managedObjectContext = appDelegate.persistentContainer.viewContext
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
