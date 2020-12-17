@@ -14,8 +14,6 @@ class ViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     
-    override var prefersStatusBarHidden: Bool { true }
-    
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var multisliderView: LSMultisliderView!
     
