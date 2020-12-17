@@ -44,6 +44,17 @@ public class LSParameterSet: NSManagedObject {
         }
     }
     
+    var displayName: String {
+        name ?? Self.dateFormatter.string(from: createdAt!)
+    }
+    
+    private static var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
+        return formatter
+    }()
+    
     private static let circleCount: Int = 4
     
     // MARK: Initialization
@@ -71,5 +82,13 @@ public class LSParameterSet: NSManagedObject {
         } catch let error as NSError {
             errorHandler?(error)
         }
+    }
+    
+    // MARK: Fetching
+    
+    class func fetchAllByRecency(context: NSManagedObjectContext) -> [LSParameterSet] {
+        let fetchRequest: NSFetchRequest<LSParameterSet> = self.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
+        return (try? context.fetch(fetchRequest)) ?? []
     }
 }

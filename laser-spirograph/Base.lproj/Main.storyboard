@@ -56,7 +56,7 @@
                                                     <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="presetsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HAY-eU-zWo"/>
+                                                    <segue destination="0IA-1T-mLv" kind="presentation" identifier="PresentSpiralsTableViewController" id="XkD-5y-ILf"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5m-RT-IIf" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
@@ -105,6 +105,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="20" y="89"/>
+        </scene>
+        <!--Saved-->
+        <scene sceneID="UEn-Tt-Jee">
+            <objects>
+                <tableViewController id="3yV-nG-00j" customClass="SpiralsTableViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gY8-4g-Yt5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParameterSetCell" textLabel="BHP-hF-nbz" style="IBUITableViewCellStyleDefault" id="Nlj-Vc-qhQ">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nlj-Vc-qhQ" id="5kM-z9-We0">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BHP-hF-nbz">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3yV-nG-00j" id="G1H-B5-BrW"/>
+                            <outlet property="delegate" destination="3yV-nG-00j" id="naf-Lw-EAf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Saved" id="GQx-af-VOG">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="cancel" id="9zK-xa-GVr">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="3yV-nG-00j" id="Ynm-nB-Uig"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2nw-gr-pmt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1804.3478260869567" y="88.392857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Van-yu-8FY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0IA-1T-mLv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Je0-HP-rcA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3yV-nG-00j" kind="relationship" relationship="rootViewController" id="MoY-qh-zdP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nl3-nV-Rxp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892.75362318840587" y="87.723214285714278"/>
         </scene>
     </scenes>
     <resources>

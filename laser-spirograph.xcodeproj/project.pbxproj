@@ -29,6 +29,7 @@
 		C2C484592577645100F17D7D /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
 		C2DA400F258AC47F00293577 /* LSParameterSet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */; };
 		C2DA4030258AD0FC00293577 /* UIAlertController+CommonAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */; };
+		C2DA4036258ADB8600293577 /* SpiralsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA4035258ADB8500293577 /* SpiralsTableViewController.swift */; };
 		C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		C2C484582577645100F17D7D /* Parameterizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameterizable.swift; sourceTree = "<group>"; };
 		C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSParameterSet+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+CommonAlerts.swift"; sourceTree = "<group>"; };
+		C2DA4035258ADB8500293577 /* SpiralsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralsTableViewController.swift; sourceTree = "<group>"; };
 		C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSConstantFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				C2C4843B257710E100F17D7D /* ViewController.swift */,
+				C2DA4035258ADB8500293577 /* SpiralsTableViewController.swift */,
 				C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */,
 			);
 			path = controllers;
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DA4036258ADB8600293577 /* SpiralsTableViewController.swift in Sources */,
 				C2C4843C257710E100F17D7D /* ViewController.swift in Sources */,
 				C2DA400F258AC47F00293577 /* LSParameterSet+CoreDataClass.swift in Sources */,
 				C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */,

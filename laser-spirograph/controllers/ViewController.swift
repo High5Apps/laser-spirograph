@@ -56,16 +56,30 @@ class ViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = false
     }
     
+    // MARK: Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "PresentSpiralsTableViewController" {
+            return managedObjectContext != nil
+        }
+        
+        return super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let navigationController = segue.destination as? UINavigationController else { return }
+        
+        if let spiralsTVC = navigationController.topViewController as? SpiralsTableViewController {
+            spiralsTVC.managedObjectContext = managedObjectContext
+        }
+    }
+    
     // MARK: Color picking
     
     @IBAction func colorPickerButtonPressed(_ sender: Any) {
         print("color")
-    }
-    
-    // MARK: Preset loading
-    
-    @IBAction func presetsButtonPressed(_ sender: Any) {
-        print("presets")
     }
     
     // MARK: Saving
