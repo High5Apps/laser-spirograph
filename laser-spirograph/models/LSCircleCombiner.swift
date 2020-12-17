@@ -19,6 +19,13 @@ class LSCircleCombiner {
         guard (radii.count > 1) && radii.allSatisfy({ $0 > 0 }) else { return nil }
         circles = radii.map() { LSCircle(radius: $0) }
     }
+    
+    func setParameters(rotationsPerSeconds: [Double], phases: [Double]) {
+        for (i, circle) in circles.enumerated() {
+            circle.rotationsPerSecond = rotationsPerSeconds[i]
+            circle.phase = phases[i]
+        }
+    }
 }
 
 // MARK: Parameterizable

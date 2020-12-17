@@ -8,11 +8,21 @@
 import UIKit
 import CoreData
 
+protocol SpiralsTableViewControllerDelegate: AnyObject {
+    func spiralsTableViewController(_ sender: SpiralsTableViewController, didSelect parameterSet: LSParameterSet)
+}
+
 class SpiralsTableViewController: UITableViewController {
     
+    // MARK: Properties
+    
     var managedObjectContext: NSManagedObjectContext!
+    
+    weak var delegate: SpiralsTableViewControllerDelegate?
         
     private var parameterSets = [LSParameterSet]()
+    
+    // MARK: Initialization
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +33,7 @@ class SpiralsTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
     }
 
-    // MARK: Table view data source
+    // MARK: Data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parameterSets.count
@@ -35,6 +45,14 @@ class SpiralsTableViewController: UITableViewController {
         cell.textLabel?.text = parameterSets[indexPath.row].displayName
 
         return cell
+    }
+    
+    // MARK: Selection
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let parameterSet = parameterSets[indexPath.row]
+        delegate?.spiralsTableViewController(self, didSelect: parameterSet)
+        dismiss(animated: true)
     }
 
     // MARK: Editing

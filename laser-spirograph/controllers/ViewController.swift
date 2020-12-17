@@ -71,6 +71,7 @@ class ViewController: UIViewController {
         
         if let spiralsTVC = navigationController.topViewController as? SpiralsTableViewController {
             spiralsTVC.managedObjectContext = managedObjectContext
+            spiralsTVC.delegate = self
         }
     }
     
@@ -101,6 +102,14 @@ class ViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    // MARK: Loading
+    
+    private func load(_ parameterSet: LSParameterSet) {
+        startTime = Date(timeIntervalSinceNow: -1 * parameterSet.startTime)
+        multisliderView.setValues(parameterSet.rotationsPerSeconds)
+        circleCombiner.setParameters(rotationsPerSeconds: parameterSet.rotationsPerSeconds, phases: parameterSet.phases)
+    }
 }
 
 // MARK: LSMultisliderViewDelegate
@@ -108,6 +117,15 @@ class ViewController: UIViewController {
 extension ViewController: LSMultisliderViewDelegate {
     
     func multisliderView(_ sender: LSMultisliderView, didChange value: Float, at index: Int) {
-        circleCombiner.circles[index].setRotationsPerSecond(Double(value), t: elapsedTime)
+        circleCombiner.circles[index].updateRotationsPerSecond(Double(value), t: elapsedTime)
+    }
+}
+
+// MARK: SpiralsTableViewControllerDelegate
+
+extension ViewController: SpiralsTableViewControllerDelegate {
+    
+    func spiralsTableViewController(_ sender: SpiralsTableViewController, didSelect parameterSet: LSParameterSet) {
+        load(parameterSet)
     }
 }

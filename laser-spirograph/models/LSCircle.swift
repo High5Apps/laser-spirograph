@@ -11,11 +11,8 @@ class LSCircle {
     
     // MARK: Properties
     
-    var rotationsPerSecond: Double { _rotationsPerSecond }
-    var phase: Double { _phase }
-    
-    private var _rotationsPerSecond: Double = 0
-    private var _phase: Double = 0
+    var rotationsPerSecond: Double = 0
+    var phase: Double = 0
     
     private let radius: Double
     
@@ -29,18 +26,18 @@ class LSCircle {
     
     // MARK: Rotational velocity updating
     
-    func setRotationsPerSecond(_ newRotationsPerSecond: Double, t: Double) {
+    func updateRotationsPerSecond(_ newRotationsPerSecond: Double, t: Double) {
         guard newRotationsPerSecond != rotationsPerSecond else { return }
         
         // Updating phase ensures that getPoint() returns the same value before and after update for the given value of t.
         // The new phase is found by solving the following equation for phi2:
         // r * cos(w1 * t + phi1) = r * cos(w2 * t + phi2)
-        _phase = (Self.radiansInCircle * (rotationsPerSecond - newRotationsPerSecond) * t + phase)
+        phase = (Self.radiansInCircle * (rotationsPerSecond - newRotationsPerSecond) * t + phase)
         
         // This constrains phase to the interval [0, 2 * pi)
-        _phase = (Self.radiansInCircle + _phase.truncatingRemainder(dividingBy: Self.radiansInCircle)).truncatingRemainder(dividingBy: Self.radiansInCircle)
+        phase = (Self.radiansInCircle + phase.truncatingRemainder(dividingBy: Self.radiansInCircle)).truncatingRemainder(dividingBy: Self.radiansInCircle)
         
-        _rotationsPerSecond = newRotationsPerSecond
+        rotationsPerSecond = newRotationsPerSecond
     }
 }
 

@@ -56,6 +56,15 @@ class LSMultisliderView: UIStackView {
         }
     }
     
+    // MARK: Value updating
+    
+    func setValues(_ values: [Double]) {
+        for view in arrangedSubviews {
+            guard let slider = (view as? VerticalSlider)?.slider else { continue }
+            slider.value = Float(values[slider.tag])
+        }
+    }
+    
     // MARK: Value change events
     
     @objc func sliderValueChanged(_ slider: UISlider) {
