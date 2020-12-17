@@ -20,7 +20,7 @@ class SpiralsTableViewController: UITableViewController {
         parameterSets = LSParameterSet.fetchAllByRecency(context: managedObjectContext)
 
         navigationController?.navigationBar.tintColor = .green
-//        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     // MARK: Table view data source
@@ -37,17 +37,21 @@ class SpiralsTableViewController: UITableViewController {
         return cell
     }
 
-    /*
-    // Override to support editing the table view.
+    // MARK: Editing
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
+        guard editingStyle == .delete else { return }
+        
+        let parameterSet = parameterSets[indexPath.row]
+        
+        if let error = parameterSet.delete() {
+            let alert = UIAlertController.okAlert(title: "Failed to delete spiral", message: error.localizedDescription)
+            self.present(alert, animated: true)
+        } else {
+            parameterSets.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
     
     // MARK: Canceling
     

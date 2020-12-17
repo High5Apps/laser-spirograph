@@ -95,7 +95,8 @@ class ViewController: UIViewController {
         let phases = circleCombiner.circles.map() { $0.phase }
         
         let parameterSet = LSParameterSet(context: context, startTime: startTime, endTime: endTime, rotationsPerSeconds: rotationsPerSeconds, phases: phases)
-        parameterSet.save() { (error) in
+        
+        if let error = parameterSet.save() {
             let alert = UIAlertController.okAlert(title: "Failed to save spiral", message: error.localizedDescription)
             self.present(alert, animated: true)
         }

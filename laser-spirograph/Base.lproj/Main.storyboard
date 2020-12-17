@@ -106,7 +106,7 @@
             </objects>
             <point key="canvasLocation" x="20" y="89"/>
         </scene>
-        <!--Saved-->
+        <!--Load Spiral-->
         <scene sceneID="UEn-Tt-Jee">
             <objects>
                 <tableViewController id="3yV-nG-00j" customClass="SpiralsTableViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
@@ -138,7 +138,7 @@
                             <outlet property="delegate" destination="3yV-nG-00j" id="naf-Lw-EAf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Saved" id="GQx-af-VOG">
+                    <navigationItem key="navigationItem" title="Load Spiral" id="GQx-af-VOG">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="cancel" id="9zK-xa-GVr">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="3yV-nG-00j" id="Ynm-nB-Uig"/>

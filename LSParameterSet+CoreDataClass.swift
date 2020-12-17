@@ -9,8 +9,6 @@
 import Foundation
 import CoreData
 
-typealias ErrorHandler = (NSError) -> ()
-
 enum LSParameterSetError: Error {
     case managedObjectContextNil
 }
@@ -71,17 +69,27 @@ public class LSParameterSet: NSManagedObject {
     
     // MARK: Saving
     
-    func save(errorHandler: ErrorHandler? = nil) {
+    @discardableResult
+    func save() -> NSError? {
         guard let managedObjectContext = managedObjectContext else {
-            errorHandler?(LSParameterSetError.managedObjectContextNil as NSError)
-            return
+            return LSParameterSetError.managedObjectContextNil as NSError
         }
         
         do {
             try managedObjectContext.save()
         } catch let error as NSError {
-            errorHandler?(error)
+            return error
         }
+        
+        return nil
+    }
+    
+    // MARK: Deleting
+    
+    @discardableResult
+    func delete() -> NSError? {
+        managedObjectContext?.delete(self)
+        return save()
     }
     
     // MARK: Fetching
