@@ -21,6 +21,7 @@ class SpiralsTableViewController: UITableViewController {
     weak var delegate: SpiralsTableViewControllerDelegate?
         
     private var parameterSets = [LSParameterSet]()
+    private var selectedAccessoryIndex: Int?
     
     // MARK: Initialization
 
@@ -31,6 +32,19 @@ class SpiralsTableViewController: UITableViewController {
 
         navigationController?.navigationBar.tintColor = .green
         navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let navigationController = segue.destination as? UINavigationController else { return }
+        
+        if let spiralDetailVC = navigationController.topViewController as? SpiralDetailViewController, let selectedAccessoryIndex = selectedAccessoryIndex {
+            spiralDetailVC.parameterSet = parameterSets[selectedAccessoryIndex]
+            self.selectedAccessoryIndex = nil
+        }
     }
 
     // MARK: Data source
@@ -51,6 +65,13 @@ class SpiralsTableViewController: UITableViewController {
         let parameterSet = parameterSets[indexPath.row]
         delegate?.spiralsTableViewController(self, didSelect: parameterSet)
         dismiss(animated: true)
+    }
+    
+    // Showing details
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        selectedAccessoryIndex = indexPath.row
+        performSegue(withIdentifier: "PresentSpiralDetailViewController", sender: self)
     }
 
     // MARK: Editing

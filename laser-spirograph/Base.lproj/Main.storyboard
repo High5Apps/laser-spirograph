@@ -136,10 +136,52 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="9lP-jP-H67" kind="presentation" identifier="PresentSpiralDetailViewController" id="bIv-s4-dPZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nw-gr-pmt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1804.3478260869567" y="88.392857142857139"/>
+        </scene>
+        <!--Spiral Detail View Controller-->
+        <scene sceneID="qpf-7Z-KaQ">
+            <objects>
+                <viewController id="g84-Xl-wGz" customClass="SpiralDetailViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Sg-Qz-rN8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thm-a5-kED" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
+                                <rect key="frame" x="16" y="72" width="382" height="382"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="thm-a5-kED" secondAttribute="height" multiplier="1:1" id="Ofx-nl-nzp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ou7-Ki-tyP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="thm-a5-kED" firstAttribute="top" secondItem="Ou7-Ki-tyP" secondAttribute="top" constant="16" id="FcR-l4-d2a"/>
+                            <constraint firstItem="Ou7-Ki-tyP" firstAttribute="trailing" secondItem="thm-a5-kED" secondAttribute="trailing" constant="16" id="KKG-uZ-9KV"/>
+                            <constraint firstItem="thm-a5-kED" firstAttribute="leading" secondItem="Ou7-Ki-tyP" secondAttribute="leading" constant="16" id="sUg-gA-eB3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VOU-mO-bsI">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="j5e-LC-bJn">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="g84-Xl-wGz" id="clf-5D-5jr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="canvas" destination="thm-a5-kED" id="qhs-vF-Ffx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ilS-ha-FqE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3677" y="88"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Van-yu-8FY">
@@ -158,6 +200,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nl3-nV-Rxp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="87.723214285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="htR-Sv-i8b">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9lP-jP-H67" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CFX-z9-1Ch">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g84-Xl-wGz" kind="relationship" relationship="rootViewController" id="hy6-ub-m2N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WOc-QN-v74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2767" y="88"/>
         </scene>
     </scenes>
     <resources>
