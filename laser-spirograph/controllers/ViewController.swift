@@ -17,31 +17,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var multisliderView: LSMultisliderView!
     
-    private var circleCombiner = LSCircleCombiner(radii: radii)!
-    private var elapsedTime: TimeInterval { Date().timeIntervalSince(startTime) }
-    
-    private lazy var startTime = Date()
+    private var spiralController: LSSpiralController!
     
     private static let refreshRate: Double = 1 / 24
     private static let maxRotationsPerSecond: Float = pow(2, 7)
-    private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
-    private static let persistenceOfVision: TimeInterval = 1 / 16
-    private static let stepCount: Int = 256
     
     // MARK: Initialization
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        canvas.parametricFunction = circleCombiner
+        spiralController = LSSpiralController(refreshRate: Self.refreshRate)
+        spiralController.canvas = canvas
         
         multisliderView.maxValue = Self.maxRotationsPerSecond
         multisliderView.delegate = self
-                
-        Timer.scheduledTimer(withTimeInterval: Self.refreshRate, repeats: true) { (_) in
-            let currentTime = self.elapsedTime
-            self.canvas.draw(startTime: currentTime - Self.persistenceOfVision, endTime: currentTime, stepCount: Self.stepCount)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,14 +80,7 @@ class ViewController: UIViewController {
             return
         }
         
-        let endTime = elapsedTime
-        let startTime = endTime - Self.persistenceOfVision
-        let rotationsPerSeconds = circleCombiner.circles.map() { $0.rotationsPerSecond }
-        let phases = circleCombiner.circles.map() { $0.phase }
-        
-        let parameterSet = LSParameterSet(context: context, startTime: startTime, endTime: endTime, rotationsPerSeconds: rotationsPerSeconds, phases: phases)
-        
-        if let error = parameterSet.save() {
+        if let error = spiralController.getParameterSet(context).save() {
             let alert = UIAlertController.okAlert(title: "Failed to save spiral", message: error.localizedDescription)
             self.present(alert, animated: true)
         }
@@ -106,9 +89,8 @@ class ViewController: UIViewController {
     // MARK: Loading
     
     private func load(_ parameterSet: LSParameterSet) {
-        startTime = Date(timeIntervalSinceNow: -1 * parameterSet.startTime)
         multisliderView.setValues(parameterSet.rotationsPerSeconds)
-        circleCombiner.setParameters(rotationsPerSeconds: parameterSet.rotationsPerSeconds, phases: parameterSet.phases)
+        spiralController.loadParameterSet(parameterSet)
     }
 }
 
@@ -117,7 +99,7 @@ class ViewController: UIViewController {
 extension ViewController: LSMultisliderViewDelegate {
     
     func multisliderView(_ sender: LSMultisliderView, didChange value: Float, at index: Int) {
-        circleCombiner.circles[index].updateRotationsPerSecond(Double(value), t: elapsedTime)
+        spiralController.updateCircleSpeed(Double(value), at: index)
     }
 }
 
