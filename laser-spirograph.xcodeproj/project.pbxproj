@@ -13,6 +13,7 @@
 		C22F269C2588401C001E2463 /* LSCircleCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */; };
 		C230842B258300230042EBCA /* LSCircleCombinerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C230842A258300220042EBCA /* LSCircleCombinerTests.swift */; };
 		C2444E12258D34C200886845 /* LSSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2444E11258D34C200886845 /* LSSpiralController.swift */; };
+		C2444E1C258D4A8300886845 /* LSParameterSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2444E1B258D4A8300886845 /* LSParameterSetCell.swift */; };
 		C2559A63258455BE00CB95BB /* LSCircleCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */; };
 		C26009D82582BA2E00278867 /* LSMultisliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26009D72582BA2E00278867 /* LSMultisliderView.swift */; };
 		C282867B25815BA3008B4D42 /* LSCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282867A25815BA3008B4D42 /* LSCircleTests.swift */; };
@@ -54,6 +55,7 @@
 		C204ED1E25805CAC0024F693 /* LSCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircle.swift; sourceTree = "<group>"; };
 		C230842A258300220042EBCA /* LSCircleCombinerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleCombinerTests.swift; sourceTree = "<group>"; };
 		C2444E11258D34C200886845 /* LSSpiralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSSpiralController.swift; sourceTree = "<group>"; };
+		C2444E1B258D4A8300886845 /* LSParameterSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LSParameterSetCell.swift; path = "/Users/JulianTigler/git/laser-spirograph/laser-spirograph/views/LSParameterSetCell.swift"; sourceTree = "<absolute>"; };
 		C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleCombiner.swift; sourceTree = "<group>"; };
 		C26009D72582BA2E00278867 /* LSMultisliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSMultisliderView.swift; sourceTree = "<group>"; };
 		C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laser-spirograph-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 				C2C4844C257711E000F17D7D /* LSCanvas.swift */,
 				C2C432CC258950FE00FBECE4 /* LSCircleButton.swift */,
 				C26009D72582BA2E00278867 /* LSMultisliderView.swift */,
+				C2444E1B258D4A8300886845 /* LSParameterSetCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				C2C2335525897D2300CA5E44 /* LSDataModel.xcdatamodeld in Sources */,
 				C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */,
 				C2C4844D257711E000F17D7D /* LSCanvas.swift in Sources */,
+				C2444E1C258D4A8300886845 /* LSParameterSetCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

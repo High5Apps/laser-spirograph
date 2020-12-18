@@ -40,10 +40,8 @@ class SpiralsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ParameterSetCell", for: indexPath)
-
-        cell.textLabel?.text = parameterSets[indexPath.row].displayName
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ParameterSetCell", for: indexPath) as! LSParameterSetCell
+        cell.parameterSet = parameterSets[indexPath.row]
         return cell
     }
     
