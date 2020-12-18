@@ -14,6 +14,14 @@ class LSCanvas: UIView {
     var color: UIColor = .green
     var parametricFunction: Parameterizable = LSConstantFunction(x: 1, y: 0)
     
+    override var bounds: CGRect {
+        didSet {
+            canvasRadius = getCanvasRadius()
+            pathTransform = getTransformFromUnitCircleToRect()
+            updateShapeLayer()
+        }
+    }
+    
     private var shapeLayer = CAShapeLayer()
     private var pathTransform: CGAffineTransform = .identity
     private var canvasRadius: CGFloat = 1
@@ -29,12 +37,6 @@ class LSCanvas: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         layer.addSublayer(shapeLayer)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        canvasRadius = getCanvasRadius()
-        pathTransform = getTransformFromUnitCircleToRect()
     }
     
     private func getCanvasRadius() -> CGFloat {
