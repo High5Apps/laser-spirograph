@@ -16,7 +16,9 @@ class LSCanvas: UIView {
     
     override var bounds: CGRect {
         didSet {
-            canvasRadius = getCanvasRadius()
+            let boundsRadius = min(bounds.size.height, bounds.size.width) / 2
+            lineWidth = 2 * boundsRadius / 85
+            canvasRadius = boundsRadius - (lineWidth / 2)
             pathTransform = getTransformFromUnitCircleToRect()
             updateShapeLayer()
         }
@@ -28,26 +30,30 @@ class LSCanvas: UIView {
     private var startTime: TimeInterval = 0
     private var endTime: TimeInterval = 1
     private var stepCount: Int = 256
+    private var lineWidth: CGFloat = 4
     
-    private static let lineWidth: CGFloat = 4
-    private static let semiLineWidth: CGFloat = lineWidth / 2
+    private var semilineWidth: CGFloat { lineWidth / 2 }
     
     // MARK: Initialization
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        layer.addSublayer(shapeLayer)
+        commonInit()
     }
     
-    private func getCanvasRadius() -> CGFloat {
-        let insetRect = bounds.insetBy(dx: Self.semiLineWidth, dy: Self.semiLineWidth)
-        return min(insetRect.size.height, insetRect.size.width) / 2
+    init() {
+        super.init(frame: .zero)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        layer.addSublayer(shapeLayer)
     }
     
     private func getTransformFromUnitCircleToRect() -> CGAffineTransform {
         let shiftAxesTransform = CGAffineTransform(translationX: 1, y: 1)
         let scaleTransform = CGAffineTransform(scaleX: canvasRadius, y: canvasRadius)
-        let strokeOffsetTransform = CGAffineTransform(translationX: Self.semiLineWidth, y: Self.semiLineWidth)
+        let strokeOffsetTransform = CGAffineTransform(translationX: semilineWidth, y: semilineWidth)
         return shiftAxesTransform.concatenating(scaleTransform).concatenating(strokeOffsetTransform)
     }
     
@@ -63,7 +69,7 @@ class LSCanvas: UIView {
     private func updateShapeLayer() {
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = bounds
-        shapeLayer.lineWidth = Self.lineWidth
+        shapeLayer.lineWidth = lineWidth
         
         let isConstant = parametricFunction.isConstant()
         
@@ -81,7 +87,7 @@ class LSCanvas: UIView {
     private func getConstantPath() -> UIBezierPath {
         let path = UIBezierPath()
         
-        let pathRadius = Self.semiLineWidth / canvasRadius
+        let pathRadius = semilineWidth / canvasRadius
         path.addArc(withCenter: getCGPoint(parametricFunction, endTime), radius: pathRadius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
         
         return path
