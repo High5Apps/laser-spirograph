@@ -65,12 +65,6 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: Color picking
-    
-    @IBAction func colorPickerButtonPressed(_ sender: Any) {
-        print("color")
-    }
-    
     // MARK: Saving
     
     @IBAction func saveButtonPressed(_ sender: Any) {

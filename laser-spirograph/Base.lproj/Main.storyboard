@@ -31,22 +31,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-hZ-035">
                                         <rect key="frame" x="64" y="398" width="254.5" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQV-aS-N1f" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemFillColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="EjQ-qL-mkY"/>
-                                                    <constraint firstAttribute="width" constant="50" id="kim-S6-0SM"/>
-                                                </constraints>
-                                                <state key="normal">
-                                                    <imageReference key="image" image="paintpalette" catalog="system" symbolScale="large"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="colorPickerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jww-ne-AmM"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-IS-NVL" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
-                                                <rect key="frame" x="102" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="HuW-jI-bJw"/>
@@ -222,7 +208,6 @@
     </scenes>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <image name="paintpalette" catalog="system" width="128" height="105"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
