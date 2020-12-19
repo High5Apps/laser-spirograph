@@ -17,6 +17,7 @@
 		C2559A63258455BE00CB95BB /* LSCircleCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */; };
 		C26009D82582BA2E00278867 /* LSMultisliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26009D72582BA2E00278867 /* LSMultisliderView.swift */; };
 		C2685722258D64B90031F050 /* SpiralDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2685721258D64B90031F050 /* SpiralDetailViewController.swift */; };
+		C2685728258D8B7C0031F050 /* UIViewController+KeyboardEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2685727258D8B7C0031F050 /* UIViewController+KeyboardEvents.swift */; };
 		C282867B25815BA3008B4D42 /* LSCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282867A25815BA3008B4D42 /* LSCircleTests.swift */; };
 		C282867E25815BF6008B4D42 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
 		C282868125815D64008B4D42 /* Parameterizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C484582577645100F17D7D /* Parameterizable.swift */; };
@@ -60,6 +61,7 @@
 		C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleCombiner.swift; sourceTree = "<group>"; };
 		C26009D72582BA2E00278867 /* LSMultisliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSMultisliderView.swift; sourceTree = "<group>"; };
 		C2685721258D64B90031F050 /* SpiralDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralDetailViewController.swift; sourceTree = "<group>"; };
+		C2685727258D8B7C0031F050 /* UIViewController+KeyboardEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+KeyboardEvents.swift"; sourceTree = "<group>"; };
 		C282866C25815B57008B4D42 /* laser-spirograph-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "laser-spirograph-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C282867025815B58008B4D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C282867A25815BA3008B4D42 /* LSCircleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleTests.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				C2685721258D64B90031F050 /* SpiralDetailViewController.swift */,
 				C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */,
 				C2444E11258D34C200886845 /* LSSpiralController.swift */,
+				C2685727258D8B7C0031F050 /* UIViewController+KeyboardEvents.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			files = (
 				C2DA4036258ADB8600293577 /* SpiralsTableViewController.swift in Sources */,
 				C2C4843C257710E100F17D7D /* ViewController.swift in Sources */,
+				C2685728258D8B7C0031F050 /* UIViewController+KeyboardEvents.swift in Sources */,
 				C2DA400F258AC47F00293577 /* LSParameterSet+CoreDataClass.swift in Sources */,
 				C2685722258D64B90031F050 /* SpiralDetailViewController.swift in Sources */,
 				C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */,

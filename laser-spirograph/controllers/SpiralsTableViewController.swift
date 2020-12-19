@@ -43,6 +43,7 @@ class SpiralsTableViewController: UITableViewController {
         
         if let spiralDetailVC = navigationController.topViewController as? SpiralDetailViewController, let selectedAccessoryIndex = selectedAccessoryIndex {
             spiralDetailVC.parameterSet = parameterSets[selectedAccessoryIndex]
+            spiralDetailVC.delegate = self
             self.selectedAccessoryIndex = nil
         }
     }
@@ -94,5 +95,15 @@ class SpiralsTableViewController: UITableViewController {
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         dismiss(animated: true)
+    }
+}
+
+// MARK: SpiralDetailViewControllerDelegate
+
+extension SpiralsTableViewController: SpiralDetailViewControllerDelegate {
+    
+    func spiralDetailViewController(_ sender: SpiralDetailViewController, didUpdate parameterSet: LSParameterSet) {
+        guard let index = parameterSets.firstIndex(of: parameterSet) else { return }
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 }

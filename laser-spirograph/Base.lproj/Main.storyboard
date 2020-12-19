@@ -138,20 +138,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thm-a5-kED" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
-                                <rect key="frame" x="16" y="72" width="382" height="382"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUw-C9-2lP">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TyD-Gz-d3A">
+                                        <rect key="frame" x="16" y="16" width="382" height="432"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thm-a5-kED" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="thm-a5-kED" secondAttribute="height" multiplier="1:1" id="Ofx-nl-nzp"/>
+                                                </constraints>
+                                            </view>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name It" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7gy-HW-YAt">
+                                                <rect key="frame" x="0.0" y="398" width="382" height="34"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="thm-a5-kED" secondAttribute="height" multiplier="1:1" id="Ofx-nl-nzp"/>
+                                    <constraint firstAttribute="trailing" secondItem="TyD-Gz-d3A" secondAttribute="trailing" id="HYt-oN-USL"/>
+                                    <constraint firstItem="TyD-Gz-d3A" firstAttribute="width" secondItem="NUw-C9-2lP" secondAttribute="width" constant="-32" id="Lwp-Mn-M8d"/>
+                                    <constraint firstItem="TyD-Gz-d3A" firstAttribute="top" secondItem="NUw-C9-2lP" secondAttribute="top" constant="16" id="blX-OA-nk4"/>
+                                    <constraint firstAttribute="bottom" secondItem="TyD-Gz-d3A" secondAttribute="bottom" constant="16" id="cUU-pl-4K8"/>
+                                    <constraint firstItem="TyD-Gz-d3A" firstAttribute="leading" secondItem="NUw-C9-2lP" secondAttribute="leading" constant="16" id="nTg-PR-waw"/>
                                 </constraints>
-                            </view>
+                                <viewLayoutGuide key="contentLayoutGuide" id="4mg-ju-RS0"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="rkh-xj-l6G"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ou7-Ki-tyP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="thm-a5-kED" firstAttribute="top" secondItem="Ou7-Ki-tyP" secondAttribute="top" constant="16" id="FcR-l4-d2a"/>
-                            <constraint firstItem="Ou7-Ki-tyP" firstAttribute="trailing" secondItem="thm-a5-kED" secondAttribute="trailing" constant="16" id="KKG-uZ-9KV"/>
-                            <constraint firstItem="thm-a5-kED" firstAttribute="leading" secondItem="Ou7-Ki-tyP" secondAttribute="leading" constant="16" id="sUg-gA-eB3"/>
+                            <constraint firstItem="Ou7-Ki-tyP" firstAttribute="bottom" secondItem="NUw-C9-2lP" secondAttribute="bottom" id="4Gq-W1-b2D"/>
+                            <constraint firstItem="NUw-C9-2lP" firstAttribute="top" secondItem="Ou7-Ki-tyP" secondAttribute="top" id="YAB-LL-ETF"/>
+                            <constraint firstItem="Ou7-Ki-tyP" firstAttribute="trailing" secondItem="NUw-C9-2lP" secondAttribute="trailing" id="ZIm-i6-7yt"/>
+                            <constraint firstItem="NUw-C9-2lP" firstAttribute="leading" secondItem="Ou7-Ki-tyP" secondAttribute="leading" id="bmi-hw-JkE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VOU-mO-bsI">
@@ -163,11 +189,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="canvas" destination="thm-a5-kED" id="qhs-vF-Ffx"/>
+                        <outlet property="nameField" destination="7gy-HW-YAt" id="3SM-Hs-pFc"/>
+                        <outlet property="scrollView" destination="NUw-C9-2lP" id="Zwb-RX-nQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ilS-ha-FqE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3677" y="88"/>
+            <point key="canvasLocation" x="3676.811594202899" y="87.723214285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Van-yu-8FY">
@@ -209,6 +237,9 @@
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
