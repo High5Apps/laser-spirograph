@@ -51,12 +51,14 @@ class SpiralDetailViewController: UIViewController {
     // MARK: Dismissing
     
     @IBAction func doneButtonPressed(_ sender: Any) {
+        updateName()
         dismiss(animated: true)
     }
     
     // MARK: Editing
     
-    private func updateName(_ newName: String?) {
+    private func updateName() {
+        let newName = nameField.text
         let name = (newName?.isEmpty ?? true) ? nil : newName
         parameterSet.name = name
         title = parameterSet.displayName
@@ -75,7 +77,7 @@ extension SpiralDetailViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        updateName(textField.text)
+        updateName()
         return true
     }
 }
