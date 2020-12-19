@@ -60,9 +60,18 @@ class SpiralDetailViewController: UIViewController {
     private func updateName() {
         let newName = nameField.text
         let name = (newName?.isEmpty ?? true) ? nil : newName
+        
+        let previousName = parameterSet.name
         parameterSet.name = name
+        
+        if let error = parameterSet.save() {
+            parameterSet.name = previousName
+            let alert = UIAlertController.okAlert(title: "Failed to save name", message: error.localizedDescription)
+            present(alert, animated: true)
+            return
+        }
+        
         title = parameterSet.displayName
-        parameterSet.save()
         delegate?.spiralDetailViewController(self, didUpdate: parameterSet)
     }
 }
