@@ -13,21 +13,33 @@ protocol LSParameterStepperDelegate: AnyObject {
 
 class LSParameterStepper: UIView {
     
-    var name: String!
-    var unit: String!
-    var precision: Int!
+    var isSeparatorHidden: Bool {
+        set { divider.isHidden = newValue }
+        get { divider.isHidden }
+    }
     
     weak var delegate: LSParameterStepperDelegate?
     
     private var label: UILabel!
     private var stepper: UIStepper!
     private var divider: UIView!
+    private var name: String!
+    private var unit: String!
+    private var precision: Int!
     
     private static let padding: CGFloat = 8
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+        commonInit()
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        commonInit()
+    }
+    
+    private func commonInit() {
         backgroundColor = .secondarySystemBackground
         
         addLabel()
@@ -73,7 +85,7 @@ class LSParameterStepper: UIView {
         divider.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
-    func setParameter(_ value: Double, name: String, unit: String = "seconds", step: Double, precision: Int, minValue: Double = 0, maxValue: Double = Double.infinity) {
+    func setParameter(_ value: Double, name: String, step: Double, precision: Int, unit: String = "seconds", minValue: Double = 0, maxValue: Double = Double.infinity) {
         self.name = name
         self.unit = unit
         self.precision = precision
@@ -84,10 +96,6 @@ class LSParameterStepper: UIView {
         stepper.value = value
         
         updateLabel()
-    }
-    
-    func hideSeparator() {
-        divider.isHidden = true
     }
     
     private func updateLabel() {
