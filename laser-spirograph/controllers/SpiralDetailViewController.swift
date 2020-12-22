@@ -80,6 +80,15 @@ class SpiralDetailViewController: UIViewController {
         title = parameterSet.displayName
         delegate?.spiralDetailViewController(self, didUpdate: parameterSet)
     }
+    
+    // MARK: Sharing
+    
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        guard let image = spiralController.getImage() else { return }
+        let items = [image]
+        let shareController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(shareController, animated: true)
+    }
 }
 
 // MARK: UITextFieldDelegate

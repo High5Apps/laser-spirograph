@@ -91,4 +91,17 @@ class LSSpiralController {
         let elapsedTime = self.elapsedTime
         canvas?.draw(startTime: spiralStartTime(elapsedTime: elapsedTime), endTime: spiralEndTime(elapsedTime: elapsedTime), stepCount: Self.stepCount)
     }
+    
+    // MARK: Sharing
+    
+    func getImage() -> UIImage? {
+        guard let view = canvas else { return nil }
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        return renderer.image { context in
+            let previousBackgroundColor = view.backgroundColor
+            view.backgroundColor = .black
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+            view.backgroundColor = previousBackgroundColor
+        }
+    }
 }

@@ -185,6 +185,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VOU-mO-bsI">
+                        <barButtonItem key="leftBarButtonItem" image="square.and.arrow.up" catalog="system" id="NYy-wS-KhS">
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="g84-Xl-wGz" id="6Zm-wo-o79"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="j5e-LC-bJn">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="g84-Xl-wGz" id="clf-5D-5jr"/>
@@ -242,6 +247,7 @@
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
