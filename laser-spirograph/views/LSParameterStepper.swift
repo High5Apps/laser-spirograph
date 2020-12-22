@@ -18,6 +18,14 @@ class LSParameterStepper: UIView {
         get { divider.isHidden }
     }
     
+    var value: Double {
+        set {
+            stepper.value = newValue
+            updateLabel()
+        }
+        get { stepper.value }
+    }
+    
     weak var delegate: LSParameterStepperDelegate?
     
     private var label: UILabel!
@@ -93,9 +101,7 @@ class LSParameterStepper: UIView {
         stepper.minimumValue = minValue
         stepper.maximumValue = maxValue
         stepper.stepValue = step
-        stepper.value = value
-        
-        updateLabel()
+        self.value = value
     }
     
     private func updateLabel() {

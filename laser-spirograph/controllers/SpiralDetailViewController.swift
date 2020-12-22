@@ -22,6 +22,7 @@ class SpiralDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var parameterStepperContainer: LSParameterStepperContainer!
     
     private var spiralController: LSSpiralController!
 
@@ -39,6 +40,10 @@ class SpiralDetailViewController: UIViewController {
         nameField.tintColor = .green
         adjustScrollViewOnKeyboardEvents(scrollView)
         
+        parameterStepperContainer.addParameterStepper(name: "Start", step: 0.01, precision: 2)
+        parameterStepperContainer.addParameterStepper(name: "Span", step: 0.0005, precision: 4)
+        parameterStepperContainer.delegate = self
+        
         load(parameterSet)
     }
     
@@ -46,6 +51,8 @@ class SpiralDetailViewController: UIViewController {
         title = parameterSet.displayName
         spiralController.loadParameterSet(parameterSet)
         nameField.text = parameterSet.name
+        parameterStepperContainer.setValue(parameterSet.startTime, at: 0)
+        parameterStepperContainer.setValue(parameterSet.endTime - parameterSet.startTime, at: 1)
     }
     
     // MARK: Dismissing
@@ -88,5 +95,32 @@ extension SpiralDetailViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         updateName()
         return true
+    }
+}
+
+// MARK: LSParameterStepperContainerDelegate
+
+extension SpiralDetailViewController: LSParameterStepperContainerDelegate {
+    
+    func parameterStepperContainer(_ sender: LSParameterStepperContainer, didChange value: Double, at index: Int) {
+        switch index {
+        case 0:
+            let span = parameterSet.endTime - parameterSet.startTime
+            parameterSet.startTime = value
+            parameterSet.endTime = value + span
+        case 1:
+            parameterSet.endTime = parameterSet.startTime + value
+        default:
+            fatalError("You must handle the new parameter stepper value change")
+        }
+        
+        if let error = parameterSet.save() {
+            let alert = UIAlertController.okAlert(title: "Failed to update spiral", message: error.localizedDescription)
+            present(alert, animated: true)
+            parameterSet.managedObjectContext?.reset()
+            load(parameterSet)
+        }
+        
+        spiralController.loadParameterSet(parameterSet)
     }
 }

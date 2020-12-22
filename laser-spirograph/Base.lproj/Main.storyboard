@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -142,7 +142,7 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TyD-Gz-d3A">
-                                        <rect key="frame" x="16" y="16" width="382" height="432"/>
+                                        <rect key="frame" x="16" y="16" width="382" height="576"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thm-a5-kED" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
@@ -157,6 +157,10 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                             </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFb-Fs-Lgw" customClass="LSParameterStepperContainer" customModule="laser_spirograph" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="448" width="382" height="128"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -190,6 +194,7 @@
                     <connections>
                         <outlet property="canvas" destination="thm-a5-kED" id="qhs-vF-Ffx"/>
                         <outlet property="nameField" destination="7gy-HW-YAt" id="3SM-Hs-pFc"/>
+                        <outlet property="parameterStepperContainer" destination="dFb-Fs-Lgw" id="Lhe-e8-0Ib"/>
                         <outlet property="scrollView" destination="NUw-C9-2lP" id="Zwb-RX-nQh"/>
                     </connections>
                 </viewController>

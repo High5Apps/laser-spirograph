@@ -24,6 +24,7 @@ class LSSpiralController {
         
     private var drawTimer: Timer?
     private var startTime = Date()
+    private var span: TimeInterval = persistenceOfVision
     
     private var elapsedTime: TimeInterval { Date().timeIntervalSince(startTime) }
     
@@ -45,7 +46,7 @@ class LSSpiralController {
     
     func getParameterSet(_ context: NSManagedObjectContext) -> LSParameterSet {
         let endTime = elapsedTime
-        let startTime = endTime - Self.persistenceOfVision
+        let startTime = endTime - span
         let rotationsPerSeconds = circleCombiner.circles.map() { $0.rotationsPerSecond }
         let phases = circleCombiner.circles.map() { $0.phase }
 
@@ -55,6 +56,7 @@ class LSSpiralController {
     func loadParameterSet(_ parameterSet: LSParameterSet) {
         stopDrawing()
         startTime = Date(timeIntervalSinceNow: -1 * parameterSet.startTime)
+        span = parameterSet.endTime - parameterSet.startTime
         circleCombiner.setParameters(rotationsPerSeconds: parameterSet.rotationsPerSeconds, phases: parameterSet.phases)
         startDrawing()
     }
@@ -70,16 +72,17 @@ class LSSpiralController {
     private func startDrawing() {
         canvas?.parametricFunction = circleCombiner
         if let refreshRate = refreshRate {
+            self.span = Self.persistenceOfVision
             drawTimer = Timer.scheduledTimer(withTimeInterval: refreshRate, repeats: true) { (_) in
                 self.draw(self.elapsedTime)
             }
         } else {
-            draw(0)
+            draw(elapsedTime)
         }
     }
     
-    private func draw(_ timeDelta: TimeInterval) {
-        canvas?.draw(startTime: timeDelta - Self.persistenceOfVision, endTime: timeDelta, stepCount: Self.stepCount)
+    private func draw(_ elapsedTime: TimeInterval) {
+        canvas?.draw(startTime: elapsedTime - span, endTime: elapsedTime, stepCount: Self.stepCount)
     }
     
     private func stopDrawing() {

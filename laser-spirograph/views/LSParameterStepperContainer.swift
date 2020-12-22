@@ -44,9 +44,13 @@ class LSParameterStepperContainer: UIView {
         stackView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
     
-    func addParameterStepper(initialValue: Double, name: String, step: Double, precision: Int, unit: String = "seconds", minValue: Double = 0, maxValue: Double = Double.infinity) {
+    private func stepper(at index: Int) -> LSParameterStepper {
+        stackView.arrangedSubviews[index] as! LSParameterStepper
+    }
+    
+    func addParameterStepper(name: String, step: Double, precision: Int, unit: String = "seconds", minValue: Double = 0, maxValue: Double = Double.infinity) {
         let stepper = LSParameterStepper()
-        stepper.setParameter(initialValue, name: name, step: step, precision: precision, unit: unit, minValue: minValue, maxValue: maxValue)
+        stepper.setParameter(0, name: name, step: step, precision: precision, unit: unit, minValue: minValue, maxValue: maxValue)
         stepper.isSeparatorHidden = true
         stepper.delegate = self
         
@@ -55,8 +59,12 @@ class LSParameterStepperContainer: UIView {
         stackView.addArrangedSubview(stepper)
         
         guard stepperIndex > 0 else { return }
-        let previousStepper = stackView.arrangedSubviews[stepperIndex - 1] as! LSParameterStepper
+        let previousStepper = self.stepper(at: stepperIndex - 1)
         previousStepper.isSeparatorHidden = false
+    }
+    
+    func setValue(_ value: Double, at index: Int) {
+        stepper(at: index).value = value
     }
 }
 
