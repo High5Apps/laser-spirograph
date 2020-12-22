@@ -24,7 +24,7 @@ class SpiralDetailViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var parameterStepperContainer: LSParameterStepperContainer!
     
-    private var spiralController: LSSpiralController!
+    private var spiralController = LSSpiralController()
 
     // MARK: Initialization
     
@@ -33,7 +33,6 @@ class SpiralDetailViewController: UIViewController {
         
         navigationController?.navigationBar.tintColor = .green
         
-        spiralController = LSSpiralController()
         spiralController.canvas = canvas
         
         nameField.delegate = self

@@ -13,40 +13,41 @@ class LSSpiralController {
     // MARK: Properties
     
     var canvas: LSCanvas? {
+        didSet { canvas?.parametricFunction = circleCombiner }
+    }
+    
+    var isAnimating: Bool = false {
         didSet {
-            if canvas == nil {
-                stopDrawing()
+            guard isAnimating != oldValue else { return }
+            if isAnimating {
+                drawTimer = Timer.scheduledTimer(withTimeInterval: Self.refreshRate, repeats: true) { (_) in
+                    self.draw()
+                }
             } else {
-                startDrawing()
+                drawTimer?.invalidate()
             }
         }
     }
-        
+    
     private var drawTimer: Timer?
-    private var startTime = Date()
-    private var span: TimeInterval = persistenceOfVision
+    private var loadedParameterSet: LSParameterSet?
     
     private var elapsedTime: TimeInterval { Date().timeIntervalSince(startTime) }
     
-    private let circleCombiner: LSCircleCombiner
-    private let refreshRate: Double?
+    private let circleCombiner = LSCircleCombiner(radii: radii)!
+    private let startTime = Date()
     
     private static let persistenceOfVision: TimeInterval = 1 / 16
     private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
     private static let stepCount: Int = 256
-    
-    // MARK: Initializtion
-    
-    init(refreshRate: Double? = nil) {
-        self.refreshRate = refreshRate
-        circleCombiner = LSCircleCombiner(radii: Self.radii)!
-    }
+    private static let refreshRate: Double = 1 / 24
     
     // MARK: Parameter sets
     
     func getParameterSet(_ context: NSManagedObjectContext) -> LSParameterSet {
-        let endTime = elapsedTime
-        let startTime = endTime - span
+        let elapsedTime = self.elapsedTime
+        let startTime = spiralStartTime(elapsedTime: elapsedTime)
+        let endTime = spiralEndTime(elapsedTime: elapsedTime)
         let rotationsPerSeconds = circleCombiner.circles.map() { $0.rotationsPerSecond }
         let phases = circleCombiner.circles.map() { $0.phase }
 
@@ -54,38 +55,40 @@ class LSSpiralController {
     }
     
     func loadParameterSet(_ parameterSet: LSParameterSet) {
-        stopDrawing()
-        startTime = Date(timeIntervalSinceNow: -1 * parameterSet.startTime)
-        span = parameterSet.endTime - parameterSet.startTime
         circleCombiner.setParameters(rotationsPerSeconds: parameterSet.rotationsPerSeconds, phases: parameterSet.phases)
-        startDrawing()
+        loadedParameterSet = parameterSet
+        
+        if !isAnimating {
+            draw()
+        }
     }
     
     // MARK: Speed updating
     
     func updateCircleSpeed(_ rotationsPerSecond: Double, at index: Int) {
-        circleCombiner.circles[index].updateRotationsPerSecond(rotationsPerSecond, t: elapsedTime)
+        circleCombiner.circles[index].updateRotationsPerSecond(rotationsPerSecond, t: spiralEndTime(elapsedTime: elapsedTime))
     }
     
     // MARK: Drawing
     
-    private func startDrawing() {
-        canvas?.parametricFunction = circleCombiner
-        if let refreshRate = refreshRate {
-            self.span = Self.persistenceOfVision
-            drawTimer = Timer.scheduledTimer(withTimeInterval: refreshRate, repeats: true) { (_) in
-                self.draw(self.elapsedTime)
-            }
+    private func spiralStartTime(elapsedTime: TimeInterval) -> TimeInterval {
+        if isAnimating {
+            return spiralEndTime(elapsedTime: elapsedTime) - Self.persistenceOfVision
         } else {
-            draw(elapsedTime)
+            return loadedParameterSet?.endTime ?? -Self.persistenceOfVision
         }
     }
     
-    private func draw(_ elapsedTime: TimeInterval) {
-        canvas?.draw(startTime: elapsedTime - span, endTime: elapsedTime, stepCount: Self.stepCount)
+    private func spiralEndTime(elapsedTime: TimeInterval) -> TimeInterval {
+        var t = (loadedParameterSet?.startTime ?? 0)
+        if isAnimating {
+            t += elapsedTime
+        }
+        return t
     }
     
-    private func stopDrawing() {
-        drawTimer?.invalidate()
+    private func draw() {
+        let elapsedTime = self.elapsedTime
+        canvas?.draw(startTime: spiralStartTime(elapsedTime: elapsedTime), endTime: spiralEndTime(elapsedTime: elapsedTime), stepCount: Self.stepCount)
     }
 }

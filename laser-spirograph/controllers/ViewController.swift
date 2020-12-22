@@ -17,9 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var multisliderView: LSMultisliderView!
     
-    private var spiralController: LSSpiralController!
+    private var spiralController = LSSpiralController()
     
-    private static let refreshRate: Double = 1 / 24
     private static let maxRotationsPerSecond: Float = pow(2, 7)
     
     // MARK: Initialization
@@ -27,8 +26,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        spiralController = LSSpiralController(refreshRate: Self.refreshRate)
         spiralController.canvas = canvas
+        spiralController.isAnimating = true
         
         multisliderView.maxValue = Self.maxRotationsPerSecond
         multisliderView.delegate = self
