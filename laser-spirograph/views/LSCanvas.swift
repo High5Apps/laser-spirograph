@@ -71,7 +71,7 @@ class LSCanvas: UIView {
         shapeLayer.frame = bounds
         shapeLayer.lineWidth = lineWidth
         
-        let isConstant = parametricFunction.isConstant()
+        let isConstant = parametricFunction.isConstant() || (startTime == endTime)
         
         let bezierPath = isConstant ? getConstantPath() : getVariablePath()
         bezierPath.apply(pathTransform)
