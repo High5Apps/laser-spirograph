@@ -70,6 +70,7 @@ class LSCanvas: UIView {
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = bounds
         shapeLayer.lineWidth = lineWidth
+        shapeLayer.lineJoin = .round
         
         let isConstant = parametricFunction.isConstant() || (startTime == endTime)
         
