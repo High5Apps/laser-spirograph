@@ -116,7 +116,7 @@ extension SpiralDetailViewController: LSParameterStepperContainerDelegate {
         if let error = parameterSet.save() {
             let alert = UIAlertController.okAlert(title: "Failed to update spiral", message: error.localizedDescription)
             present(alert, animated: true)
-            parameterSet.managedObjectContext?.reset()
+            parameterSet.managedObjectContext?.rollback()
             load(parameterSet)
         }
         
