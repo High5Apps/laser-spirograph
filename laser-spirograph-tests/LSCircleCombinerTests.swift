@@ -12,14 +12,14 @@ class LSCircleCombinerTests: XCTestCase {
     func testIsConstantShouldBeTrueWhenAllFunctionsConstant() throws {
         let radii: [Double] = [1, 1, 1, 1]
         let circleCombiner = LSCircleCombiner(radii: radii)!
-        circleCombiner.circles.forEach() { $0.setRotationsPerSecond(0, t: 0) }
+        circleCombiner.circles.forEach() { $0.updateRotationsPerSecond(0, t: 0) }
         XCTAssert(circleCombiner.isConstant())
         
         for circle in circleCombiner.circles {
-            circle.setRotationsPerSecond(1e-6, t: 0)
+            circle.updateRotationsPerSecond(1e-6, t: 0)
             XCTAssert(!circleCombiner.isConstant())
             
-            circle.setRotationsPerSecond(0, t: 0)
+            circle.updateRotationsPerSecond(0, t: 0)
             XCTAssert(circleCombiner.isConstant())
         }
     }
