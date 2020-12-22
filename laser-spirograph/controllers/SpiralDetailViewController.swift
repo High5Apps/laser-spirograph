@@ -118,8 +118,10 @@ extension SpiralDetailViewController: LSParameterStepperContainerDelegate {
             present(alert, animated: true)
             parameterSet.managedObjectContext?.rollback()
             load(parameterSet)
+            return
         }
         
         spiralController.loadParameterSet(parameterSet)
+        delegate?.spiralDetailViewController(self, didUpdate: parameterSet)
     }
 }
