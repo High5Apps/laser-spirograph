@@ -33,6 +33,7 @@ class SpiralDetailViewController: UIViewController {
         
         navigationController?.navigationBar.tintColor = .green
         
+        spiralController.drawResolution = 1024
         spiralController.canvas = canvas
         
         nameField.delegate = self

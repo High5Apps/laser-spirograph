@@ -29,6 +29,8 @@ class LSSpiralController {
         }
     }
     
+    var drawResolution: Int = 256
+    
     private var drawTimer: Timer?
     private var loadedParameterSet: LSParameterSet?
     
@@ -39,7 +41,6 @@ class LSSpiralController {
     
     private static let persistenceOfVision: TimeInterval = 1 / 16
     private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
-    private static let stepCount: Int = 256
     private static let refreshRate: Double = 1 / 24
     
     // MARK: Parameter sets
@@ -89,7 +90,7 @@ class LSSpiralController {
     
     private func draw() {
         let elapsedTime = self.elapsedTime
-        canvas?.draw(startTime: spiralStartTime(elapsedTime: elapsedTime), endTime: spiralEndTime(elapsedTime: elapsedTime), stepCount: Self.stepCount)
+        canvas?.draw(startTime: spiralStartTime(elapsedTime: elapsedTime), endTime: spiralEndTime(elapsedTime: elapsedTime), stepCount: drawResolution)
     }
     
     // MARK: Sharing
