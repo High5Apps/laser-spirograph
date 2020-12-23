@@ -28,10 +28,26 @@ class SpiralsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.tableFooterView = UIView() // Hides empty rows
+        addEmptyView()
+        
         parameterSets = LSParameterSet.fetchAllByRecency(context: managedObjectContext)
 
         navigationController?.navigationBar.tintColor = .green
         navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    private func addEmptyView() {
+        let attributedString = NSMutableAttributedString(string: "You don't have any saved spirals. To save a spiral, tap Cancel and then tap ")
+        let image = UIImage(systemName: "square.and.arrow.down")!
+        attributedString.append(NSAttributedString(attachment: NSTextAttachment(image: image)))
+        
+        let label = UILabel()
+        label.attributedText = attributedString
+        label.font = .preferredFont(forTextStyle: .body)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        tableView.backgroundView = label
     }
     
     // MARK: Navigation
@@ -51,7 +67,9 @@ class SpiralsTableViewController: UITableViewController {
     // MARK: Data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return parameterSets.count
+        let count = parameterSets.count
+        tableView.backgroundView?.isHidden = (count > 0)
+        return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
