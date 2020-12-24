@@ -105,4 +105,10 @@ class LSSpiralController {
             view.backgroundColor = previousBackgroundColor
         }
     }
+    
+    func getSvgExporter() -> LSSvgExporter? {
+        guard let parameterSet = loadedParameterSet, let exporter = canvas?.getSvgExporter() else { return nil }
+        exporter.title = parameterSet.displayName
+        return exporter
+    }
 }

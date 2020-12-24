@@ -39,6 +39,7 @@
 		C2DA4036258ADB8600293577 /* SpiralsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA4035258ADB8500293577 /* SpiralsTableViewController.swift */; };
 		C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */; };
 		C2DEAC2C2593D7A400FF153C /* LSSvgPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEAC2B2593D7A400FF153C /* LSSvgPath.swift */; };
+		C2DFF3812595251D006B6EDD /* UIAlertController+SpiralSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFF3802595251D006B6EDD /* UIAlertController+SpiralSharing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		C2DA4035258ADB8500293577 /* SpiralsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralsTableViewController.swift; sourceTree = "<group>"; };
 		C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSConstantFunction.swift; sourceTree = "<group>"; };
 		C2DEAC2B2593D7A400FF153C /* LSSvgPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSSvgPath.swift; sourceTree = "<group>"; };
+		C2DFF3802595251D006B6EDD /* UIAlertController+SpiralSharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+SpiralSharing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				C2DA4035258ADB8500293577 /* SpiralsTableViewController.swift */,
 				C2685721258D64B90031F050 /* SpiralDetailViewController.swift */,
 				C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */,
+				C2DFF3802595251D006B6EDD /* UIAlertController+SpiralSharing.swift */,
 				C2444E11258D34C200886845 /* LSSpiralController.swift */,
 				C2685727258D8B7C0031F050 /* UIViewController+KeyboardEvents.swift */,
 			);
@@ -409,6 +412,7 @@
 				C2444E12258D34C200886845 /* LSSpiralController.swift in Sources */,
 				C26009D82582BA2E00278867 /* LSMultisliderView.swift in Sources */,
 				C2DA4030258AD0FC00293577 /* UIAlertController+CommonAlerts.swift in Sources */,
+				C2DFF3812595251D006B6EDD /* UIAlertController+SpiralSharing.swift in Sources */,
 				C2559A63258455BE00CB95BB /* LSCircleCombiner.swift in Sources */,
 				C2AE74E22591377900EB158E /* LSParameterStepperContainer.swift in Sources */,
 				C2C484592577645100F17D7D /* Parameterizable.swift in Sources */,
