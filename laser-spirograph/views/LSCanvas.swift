@@ -17,7 +17,7 @@ class LSCanvas: UIView {
     override var bounds: CGRect {
         didSet {
             let boundsRadius = min(bounds.size.height, bounds.size.width) / 2
-            lineWidth = 2 * boundsRadius / 85
+            lineWidth = boundsRadius * Self.lineWidthMultiplier
             canvasRadius = boundsRadius - (lineWidth / 2)
             pathTransform = getTransformFromUnitCircleToRect()
             updateShapeLayer()
@@ -33,6 +33,11 @@ class LSCanvas: UIView {
     private var lineWidth: CGFloat = 4
     
     private var semilineWidth: CGFloat { lineWidth / 2 }
+    private var isDrawingConstant: Bool {
+        parametricFunction.isConstant() || (startTime == endTime)
+    }
+    
+    private static let lineWidthMultiplier: CGFloat = 2 / 85
     
     // MARK: Initialization
     
@@ -72,9 +77,10 @@ class LSCanvas: UIView {
         shapeLayer.lineWidth = lineWidth
         shapeLayer.lineJoin = .round
         
-        let isConstant = parametricFunction.isConstant() || (startTime == endTime)
+        let isConstant = isDrawingConstant
         
-        let bezierPath = isConstant ? getConstantPath() : getVariablePath()
+        let bezierPath = UIBezierPath()
+        isConstant ? addConstantPath(to: bezierPath) : addVariablePath(to: bezierPath)
         bezierPath.apply(pathTransform)
         shapeLayer.path = bezierPath.cgPath
         
@@ -85,30 +91,33 @@ class LSCanvas: UIView {
         self.shapeLayer = shapeLayer
     }
     
-    private func getConstantPath() -> UIBezierPath {
-        let path = UIBezierPath()
-        
+    private func addConstantPath(to path: UIBezierPath) {
         let pathRadius = semilineWidth / canvasRadius
         path.addArc(withCenter: getCGPoint(parametricFunction, endTime), radius: pathRadius, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
-        
-        return path
     }
     
-    private func getVariablePath() -> UIBezierPath {
-        let path = UIBezierPath()
-        
+    private func addVariablePath(to path: LSVectorizable) {
         path.move(to: getCGPoint(parametricFunction, startTime))
         
         let stepSize = (endTime - startTime) / Double(stepCount)
         for t in stride(from: startTime, through: endTime, by: stepSize) {
             path.addLine(to: getCGPoint(parametricFunction, t))
         }
-        
-        return path
     }
     
     private func getCGPoint(_ parametricFunction: Parameterizable, _ time: Double) -> CGPoint {
         let (x, y) = parametricFunction.getPoint(t: time)
         return CGPoint(x: x, y: y)
+    }
+    
+    // MARK: SVG exporting
+    
+    func getSvgExporter() -> LSSvgExporter? {
+        guard !isDrawingConstant else { return nil }
+        
+        let svgPath = LSSvgPath()
+        addVariablePath(to: svgPath)
+        
+        return LSSvgExporter(path: svgPath, bounds: bounds, strokeWidth: Self.lineWidthMultiplier, strokeColor: color.cgColor, pathTransform: pathTransform)
     }
 }
