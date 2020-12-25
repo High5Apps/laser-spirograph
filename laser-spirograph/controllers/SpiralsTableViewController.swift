@@ -33,7 +33,6 @@ class SpiralsTableViewController: UITableViewController {
         
         parameterSets = LSParameterSet.fetchAllByRecency(context: managedObjectContext)
 
-        navigationController?.navigationBar.tintColor = .green
         navigationItem.leftBarButtonItem = editButtonItem
     }
     

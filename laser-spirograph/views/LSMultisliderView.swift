@@ -40,7 +40,6 @@ class LSMultisliderView: UIStackView {
         for i in 0..<Self.sliderCount {
             let slider = VerticalSlider()
             slider.slider.tag = i
-            slider.minimumTrackTintColor = .green
             slider.slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
             addArrangedSubview(slider)
         }

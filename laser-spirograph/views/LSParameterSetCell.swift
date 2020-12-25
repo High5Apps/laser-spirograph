@@ -31,7 +31,6 @@ class LSParameterSetCell: UITableViewCell {
         spiralController.canvas = canvas
         
         accessoryType = .detailButton
-        tintColor = .green
     }
 
     private func addCanvas() {

@@ -20,7 +20,7 @@ extension UIAlertController {
 
     class func spiralShareController(spiralName: String, spiralController: LSSpiralController, presentingViewController: UIViewController) -> UIAlertController {
         let optionSheet = UIAlertController(title: "Share as", message: nil, preferredStyle: .actionSheet)
-        optionSheet.view.tintColor = .green
+        optionSheet.view.tintColor = presentingViewController.view.window?.tintColor
         
         let optionHandler: OptionHandler = { (alert) in
             let format = SpiralExportFormat(rawValue: alert.title!)!

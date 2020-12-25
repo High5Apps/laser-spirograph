@@ -11,7 +11,6 @@ class LSCanvas: UIView {
     
     // MARK: Properties
     
-    var color: UIColor = .green
     var parametricFunction: Parameterizable = LSConstantFunction(x: 1, y: 0)
     
     override var bounds: CGRect {
@@ -36,6 +35,7 @@ class LSCanvas: UIView {
     private var isDrawingConstant: Bool {
         parametricFunction.isConstant() || (startTime == endTime)
     }
+    private var color: CGColor { window?.tintColor.cgColor ?? UIColor.clear.cgColor }
     
     private static let lineWidthMultiplier: CGFloat = 2 / 85
     
@@ -84,8 +84,8 @@ class LSCanvas: UIView {
         bezierPath.apply(pathTransform)
         shapeLayer.path = bezierPath.cgPath
         
-        shapeLayer.strokeColor = isConstant ? nil : UIColor.green.cgColor
-        shapeLayer.fillColor = isConstant ? UIColor.green.cgColor : nil
+        shapeLayer.strokeColor = isConstant ? nil : color
+        shapeLayer.fillColor = isConstant ? color : nil
         
         layer.replaceSublayer(self.shapeLayer, with: shapeLayer)
         self.shapeLayer = shapeLayer
@@ -118,6 +118,6 @@ class LSCanvas: UIView {
         let svgPath = LSSvgPath()
         addVariablePath(to: svgPath)
         
-        return LSSvgExporter(path: svgPath, bounds: bounds, strokeWidth: Self.lineWidthMultiplier, strokeColor: color.cgColor, pathTransform: pathTransform)
+        return LSSvgExporter(path: svgPath, bounds: bounds, strokeWidth: Self.lineWidthMultiplier, strokeColor: color, pathTransform: pathTransform)
     }
 }

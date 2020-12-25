@@ -31,13 +31,10 @@ class SpiralDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.tintColor = .green
-        
         spiralController.drawResolution = 1024
         spiralController.canvas = canvas
         
         nameField.delegate = self
-        nameField.tintColor = .green
         adjustScrollViewOnKeyboardEvents(scrollView)
         
         parameterStepperContainer.addParameterStepper(name: "Start", step: 0.01, precision: 2)
