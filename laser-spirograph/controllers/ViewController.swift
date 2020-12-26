@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var multisliderView: LSMultisliderView!
+    @IBOutlet weak var loadSpiralButon: LSCircleButton!
     
     private var spiralController = LSSpiralController()
     
@@ -76,7 +77,41 @@ class ViewController: UIViewController {
         if let error = spiralController.getParameterSet(context).save() {
             let alert = UIAlertController.okAlert(title: "Failed to save spiral", message: error.localizedDescription)
             self.present(alert, animated: true)
+            return
         }
+        
+        showSaveAnimation()
+    }
+    
+    private func showSaveAnimation() {
+        canvas.layer.cornerRadius = canvas.bounds.width / 2
+        
+        let previousBackgroundColor = canvas.backgroundColor
+        canvas.backgroundColor = .secondarySystemFill
+        
+        spiralController.isAnimating = false
+        
+        UIView.animate(withDuration: 1) {
+            self.canvas.transform = self.getTransformFromCanvasToLoadButton()
+        } completion: { (finished) in
+            self.canvas.layer.cornerRadius = 0
+            self.canvas.backgroundColor = previousBackgroundColor
+            self.spiralController.isAnimating = true
+            self.canvas.transform = .identity
+        }
+    }
+    
+    private func getTransformFromCanvasToLoadButton() -> CGAffineTransform {
+        let scaleX = loadSpiralButon.bounds.width / canvas.bounds.width
+        let scaleY = loadSpiralButon.bounds.height / canvas.bounds.height
+        let scaleTransform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+        
+        let convertedCenter = loadSpiralButon.convert(loadSpiralButon.center, to: canvas)
+        let centerDeltaX = convertedCenter.x - canvas.center.x
+        let centerDeltaY = convertedCenter.y - canvas.center.y
+        let translationTransform = CGAffineTransform(translationX: centerDeltaX, y: centerDeltaY)
+        
+        return scaleTransform.concatenating(translationTransform)
     }
     
     // MARK: Loading

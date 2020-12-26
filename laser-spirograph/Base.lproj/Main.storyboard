@@ -85,6 +85,7 @@
                     </view>
                     <connections>
                         <outlet property="canvas" destination="XtC-eS-Moq" id="pFt-tj-SbV"/>
+                        <outlet property="loadSpiralButon" destination="wcJ-IS-NVL" id="tDt-sS-VZW"/>
                         <outlet property="multisliderView" destination="MwB-2R-Yc4" id="5L5-HW-gIa"/>
                     </connections>
                 </viewController>
