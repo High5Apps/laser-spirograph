@@ -22,7 +22,7 @@ class LSCircleButton: UIButton {
         super.init(coder: coder)
 
         backgroundColor = Self.normalBackgroundColor
-        tintColor = .secondaryLabel
+        tintColor = .label
     }
     
     override func layoutSubviews() {
