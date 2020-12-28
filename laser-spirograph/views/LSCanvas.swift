@@ -14,13 +14,7 @@ class LSCanvas: UIView {
     var parametricFunction: Parameterizable = LSConstantFunction(x: 1, y: 0)
     
     override var bounds: CGRect {
-        didSet {
-            let boundsRadius = min(bounds.size.height, bounds.size.width) / 2
-            lineWidth = boundsRadius * Self.lineWidthMultiplier
-            canvasRadius = boundsRadius - (lineWidth / 2)
-            pathTransform = getTransformFromUnitCircleToRect()
-            updateShapeLayer()
-        }
+        didSet { onBoundsChanged() }
     }
     
     private var shapeLayer = CAShapeLayer()
@@ -53,6 +47,15 @@ class LSCanvas: UIView {
     
     private func commonInit() {
         layer.addSublayer(shapeLayer)
+        onBoundsChanged()
+    }
+    
+    private func onBoundsChanged() {
+        let boundsRadius = min(bounds.size.height, bounds.size.width) / 2
+        lineWidth = boundsRadius * Self.lineWidthMultiplier
+        canvasRadius = boundsRadius - (lineWidth / 2)
+        pathTransform = getTransformFromUnitCircleToRect()
+        updateShapeLayer()
     }
     
     private func getTransformFromUnitCircleToRect() -> CGAffineTransform {
