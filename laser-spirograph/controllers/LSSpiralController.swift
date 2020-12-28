@@ -73,15 +73,15 @@ class LSSpiralController {
     // MARK: Drawing
     
     private func spiralStartTime(elapsedTime: TimeInterval) -> TimeInterval {
-        if isAnimating {
-            return spiralEndTime(elapsedTime: elapsedTime) - Self.persistenceOfVision
+        if let loadedParameterSet = loadedParameterSet, !isAnimating {
+            return loadedParameterSet.startTime
         } else {
-            return loadedParameterSet?.endTime ?? -Self.persistenceOfVision
+            return spiralEndTime(elapsedTime: elapsedTime) - Self.persistenceOfVision
         }
     }
     
     private func spiralEndTime(elapsedTime: TimeInterval) -> TimeInterval {
-        var t = (loadedParameterSet?.startTime ?? 0)
+        var t = (loadedParameterSet?.endTime ?? 0)
         if isAnimating {
             t += elapsedTime
         }
