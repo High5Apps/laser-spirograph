@@ -37,7 +37,7 @@ class LSSpiralController {
     private var elapsedTime: TimeInterval { Date().timeIntervalSince(startTime) }
     
     private let circleCombiner = LSCircleCombiner(radii: radii)!
-    private let startTime = Date()
+    private var startTime = Date()
     
     private static let persistenceOfVision: TimeInterval = 1 / 16
     private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
@@ -56,6 +56,7 @@ class LSSpiralController {
     }
     
     func loadParameterSet(_ parameterSet: LSParameterSet) {
+        startTime = Date()
         circleCombiner.setParameters(rotationsPerSeconds: parameterSet.rotationsPerSeconds, phases: parameterSet.phases)
         loadedParameterSet = parameterSet
         
