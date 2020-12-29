@@ -74,30 +74,33 @@ class ViewController: UIViewController {
             return
         }
         
-        if let error = spiralController.getParameterSet(context).save() {
+        let parameterSet = spiralController.getParameterSet(context)
+        if let error = parameterSet.save() {
             let alert = UIAlertController.okAlert(title: "Failed to save spiral", message: error.localizedDescription)
             self.present(alert, animated: true)
             return
         }
         
-        showSaveAnimation()
+        spiralController.isAnimating = false
+        showSaveAnimation(completion: {
+            self.spiralController.loadParameterSet(parameterSet)
+            self.spiralController.isAnimating = true
+        })
     }
     
-    private func showSaveAnimation() {
+    private func showSaveAnimation(completion: @escaping () -> ()) {
         canvas.layer.cornerRadius = canvas.bounds.width / 2
         
         let previousBackgroundColor = canvas.backgroundColor
         canvas.backgroundColor = .secondarySystemFill
-        
-        spiralController.isAnimating = false
         
         UIView.animate(withDuration: 1) {
             self.canvas.transform = self.getTransformFromCanvasToLoadButton()
         } completion: { (finished) in
             self.canvas.layer.cornerRadius = 0
             self.canvas.backgroundColor = previousBackgroundColor
-            self.spiralController.isAnimating = true
             self.canvas.transform = .identity
+            completion()
         }
     }
     
