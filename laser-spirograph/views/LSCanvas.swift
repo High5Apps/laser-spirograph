@@ -13,10 +13,7 @@ class LSCanvas: UIView {
     
     var parametricFunction: Parameterizable = LSConstantFunction(x: 1, y: 0)
     
-    override var bounds: CGRect {
-        didSet { onBoundsChanged() }
-    }
-    
+    private var previousBounds: CGRect = .zero
     private var shapeLayer = CAShapeLayer()
     private var pathTransform: CGAffineTransform = .identity
     private var canvasRadius: CGFloat = 1
@@ -47,6 +44,12 @@ class LSCanvas: UIView {
     
     private func commonInit() {
         layer.addSublayer(shapeLayer)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard bounds != previousBounds else { return }
+        previousBounds = bounds
         onBoundsChanged()
     }
     
