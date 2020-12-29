@@ -56,6 +56,7 @@ class LSCanvas: UIView {
     private func onBoundsChanged() {
         let boundsRadius = min(bounds.size.height, bounds.size.width) / 2
         lineWidth = boundsRadius * Self.lineWidthMultiplier
+        lineWidth = min(8, lineWidth)
         canvasRadius = boundsRadius - (lineWidth / 2)
         pathTransform = getTransformFromUnitCircleToRect()
         updateShapeLayer()
