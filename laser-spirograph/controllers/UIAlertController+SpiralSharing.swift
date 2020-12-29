@@ -18,8 +18,9 @@ private typealias OptionHandler = (UIAlertAction) -> ()
 
 extension UIAlertController {
 
-    class func spiralShareController(spiralName: String, spiralController: LSSpiralController, presentingViewController: UIViewController) -> UIAlertController {
+    class func spiralShareController(spiralName: String, spiralController: LSSpiralController, presentedFrom barButtonItem: UIBarButtonItem, presentingViewController: UIViewController) -> UIAlertController {
         let optionSheet = UIAlertController(title: "Share as", message: nil, preferredStyle: .actionSheet)
+        optionSheet.popoverPresentationController?.barButtonItem = barButtonItem
         optionSheet.view.tintColor = presentingViewController.view.window?.tintColor
         
         let optionHandler: OptionHandler = { (alert) in
@@ -34,6 +35,7 @@ extension UIAlertController {
             }
             
             let shareController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            shareController.popoverPresentationController?.barButtonItem = barButtonItem
             shareController.completionWithItemsHandler = fileCleanupHandler(for: url)
             presentingViewController.present(shareController, animated: true)
         }
