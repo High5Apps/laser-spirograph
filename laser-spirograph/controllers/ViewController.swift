@@ -63,6 +63,15 @@ class ViewController: UIViewController {
             spiralsTVC.managedObjectContext = managedObjectContext
             spiralsTVC.delegate = self
         }
+        
+        willPresent(navigationController)
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag) {
+            completion?()
+            self.didDismiss()
+        }
     }
     
     // MARK: Saving
@@ -140,5 +149,24 @@ extension ViewController: SpiralsTableViewControllerDelegate {
     
     func spiralsTableViewController(_ sender: SpiralsTableViewController, didSelect parameterSet: LSParameterSet) {
         load(parameterSet)
+    }
+}
+
+// MARK: UIAdaptivePresentationControllerDelegate
+
+extension ViewController: UIAdaptivePresentationControllerDelegate {
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        didDismiss()
+    }
+    
+    private func willPresent(_ navigationController: UINavigationController) {
+        navigationController.presentationController?.delegate = self
+        spiralController.isAnimating = false
+    }
+    
+    private func didDismiss() {
+        guard presentedViewController == nil else { return }
+        spiralController.isAnimating = true
     }
 }

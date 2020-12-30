@@ -82,7 +82,7 @@ class SpiralsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let parameterSet = parameterSets[indexPath.row]
         delegate?.spiralsTableViewController(self, didSelect: parameterSet)
-        dismiss(animated: true)
+        presentingViewController?.dismiss(animated: true)
     }
     
     // Showing details
@@ -111,7 +111,7 @@ class SpiralsTableViewController: UITableViewController {
     // MARK: Canceling
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
-        dismiss(animated: true)
+        presentingViewController?.dismiss(animated: true)
     }
 }
 

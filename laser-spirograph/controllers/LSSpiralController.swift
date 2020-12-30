@@ -21,6 +21,7 @@ class LSSpiralController {
             guard isAnimating != oldValue else { return }
             if isAnimating {
                 drawTimer = Timer.scheduledTimer(withTimeInterval: Self.refreshRate, repeats: true) { (_) in
+                    self.elapsedAnimationTime += Self.refreshRate
                     self.draw()
                 }
             } else {
@@ -33,11 +34,9 @@ class LSSpiralController {
     
     private var drawTimer: Timer?
     private var loadedParameterSet: LSParameterSet?
-    
-    private var elapsedTime: TimeInterval { Date().timeIntervalSince(startTime) }
+    private var elapsedAnimationTime: TimeInterval = 0
     
     private let circleCombiner = LSCircleCombiner(radii: radii)!
-    private var startTime = Date()
     
     private static let persistenceOfVision: TimeInterval = 1 / 16
     private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
@@ -46,7 +45,7 @@ class LSSpiralController {
     // MARK: Parameter sets
     
     func getParameterSet(_ context: NSManagedObjectContext) -> LSParameterSet {
-        let elapsedTime = self.elapsedTime
+        let elapsedTime = self.elapsedAnimationTime
         let startTime = spiralStartTime(elapsedTime: elapsedTime)
         let endTime = spiralEndTime(elapsedTime: elapsedTime)
         let rotationsPerSeconds = circleCombiner.circles.map() { $0.rotationsPerSecond }
@@ -56,7 +55,7 @@ class LSSpiralController {
     }
     
     func loadParameterSet(_ parameterSet: LSParameterSet) {
-        startTime = Date()
+        elapsedAnimationTime = 0
         circleCombiner.setParameters(rotationsPerSeconds: parameterSet.rotationsPerSeconds, phases: parameterSet.phases)
         loadedParameterSet = parameterSet
         
@@ -68,7 +67,7 @@ class LSSpiralController {
     // MARK: Speed updating
     
     func updateCircleSpeed(_ rotationsPerSecond: Double, at index: Int) {
-        circleCombiner.circles[index].updateRotationsPerSecond(rotationsPerSecond, t: spiralEndTime(elapsedTime: elapsedTime))
+        circleCombiner.circles[index].updateRotationsPerSecond(rotationsPerSecond, t: spiralEndTime(elapsedTime: elapsedAnimationTime))
     }
     
     // MARK: Drawing
@@ -90,7 +89,7 @@ class LSSpiralController {
     }
     
     private func draw() {
-        let elapsedTime = self.elapsedTime
+        let elapsedTime = self.elapsedAnimationTime
         canvas?.draw(startTime: spiralStartTime(elapsedTime: elapsedTime), endTime: spiralEndTime(elapsedTime: elapsedTime), stepCount: drawResolution)
     }
     
