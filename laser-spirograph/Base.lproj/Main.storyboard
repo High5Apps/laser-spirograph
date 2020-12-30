@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ine-yq-PlL">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ine-yq-PlL">
                                 <rect key="frame" x="0.0" y="44" width="414" height="786"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-eS-Moq" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
@@ -29,7 +29,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-hZ-035">
-                                        <rect key="frame" x="83.5" y="430" width="247" height="50"/>
+                                        <rect key="frame" x="83.5" y="422" width="247" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-IS-NVL" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -62,7 +62,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MwB-2R-Yc4" customClass="LSMultisliderView" customModule="laser_spirograph" customModuleProvider="target">
-                                        <rect key="frame" x="41.5" y="496" width="331" height="290"/>
+                                        <rect key="frame" x="41.5" y="480" width="331" height="306"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
