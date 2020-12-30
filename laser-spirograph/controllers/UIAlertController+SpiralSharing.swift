@@ -37,12 +37,30 @@ extension UIAlertController {
             let shareController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             shareController.popoverPresentationController?.barButtonItem = barButtonItem
             shareController.completionWithItemsHandler = fileCleanupHandler(for: url)
-            presentingViewController.present(shareController, animated: true)
+            
+            addActivityIndicator(nextTo: barButtonItem)
+            presentingViewController.present(shareController, animated: true) {
+                removeActivityIndicator(nextTo: barButtonItem)
+            }
         }
         
         addOptions(to: optionSheet, with: optionHandler)
         
         return optionSheet
+    }
+    
+    private class func addActivityIndicator(nextTo barButtonItem: UIBarButtonItem) {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = .label
+        activityIndicator.startAnimating()
+        
+        let activityIndicatorItem = UIBarButtonItem(customView: activityIndicator)
+        barButtonItem.buttonGroup?.barButtonItems.append(activityIndicatorItem)
+    }
+    
+    private class func removeActivityIndicator(nextTo barButtonItem: UIBarButtonItem) {
+        guard let buttonGroup = barButtonItem.buttonGroup, buttonGroup.barButtonItems.last?.customView is UIActivityIndicatorView else { return }
+        buttonGroup.barButtonItems.removeLast()
     }
     
     private class func addOptions(to optionSheet: UIAlertController, with optionHandler: @escaping OptionHandler) {
