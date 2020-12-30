@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ine-yq-PlL">
-                                <rect key="frame" x="16" y="60" width="382" height="770"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="786"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-eS-Moq" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="XtC-eS-Moq" secondAttribute="height" multiplier="1:1" id="2Va-rr-Gwb"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-hZ-035">
-                                        <rect key="frame" x="64" y="398" width="254.5" height="50"/>
+                                        <rect key="frame" x="83.5" y="430" width="247" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-IS-NVL" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -46,7 +46,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5m-RT-IIf" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
-                                                <rect key="frame" x="204.5" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="197" y="0.0" width="50" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="0qe-Wm-z5K"/>
@@ -62,14 +62,13 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MwB-2R-Yc4" customClass="LSMultisliderView" customModule="laser_spirograph" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="464" width="350" height="306"/>
+                                        <rect key="frame" x="41.5" y="496" width="331" height="290"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="MwB-2R-Yc4" secondAttribute="trailing" constant="16" id="AXD-AT-FN6"/>
                                     <constraint firstItem="XtC-eS-Moq" firstAttribute="leading" secondItem="ine-yq-PlL" secondAttribute="leading" id="BOu-OY-1Ac"/>
-                                    <constraint firstItem="wG3-hZ-035" firstAttribute="width" secondItem="ine-yq-PlL" secondAttribute="width" multiplier="0.75" constant="-32" id="NbC-si-8UQ"/>
-                                    <constraint firstItem="MwB-2R-Yc4" firstAttribute="leading" secondItem="ine-yq-PlL" secondAttribute="leading" constant="16" id="gKY-xA-vm5"/>
+                                    <constraint firstItem="wG3-hZ-035" firstAttribute="width" secondItem="MwB-2R-Yc4" secondAttribute="width" multiplier="0.67" constant="25" id="NbC-si-8UQ"/>
+                                    <constraint firstItem="MwB-2R-Yc4" firstAttribute="width" secondItem="ine-yq-PlL" secondAttribute="width" multiplier="0.8" id="eQU-7c-y9m"/>
                                     <constraint firstAttribute="trailing" secondItem="XtC-eS-Moq" secondAttribute="trailing" id="sgY-wB-fbi"/>
                                 </constraints>
                             </stackView>
@@ -78,9 +77,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ine-yq-PlL" secondAttribute="bottom" constant="32" id="LsH-ed-zdY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ine-yq-PlL" secondAttribute="trailing" constant="16" id="deQ-aT-PhZ"/>
-                            <constraint firstItem="ine-yq-PlL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="qf2-17-l67"/>
-                            <constraint firstItem="ine-yq-PlL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="y08-eB-Phb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ine-yq-PlL" secondAttribute="trailing" id="deQ-aT-PhZ"/>
+                            <constraint firstItem="ine-yq-PlL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qf2-17-l67"/>
+                            <constraint firstItem="ine-yq-PlL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y08-eB-Phb"/>
                         </constraints>
                     </view>
                     <connections>
