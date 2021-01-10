@@ -30,6 +30,13 @@ class SettingsTableViewController: UITableViewController {
                     EmailComposer.show(from: self, with: subject)
             }),
             Setting(
+                title: "Privacy Policy",
+                systemImageName: "doc",
+                accessoryType: .none,
+                onClick: { (_) in
+                    self.presentBrowser(at: Self.privacyPolicyUrl)
+            }),
+            Setting(
                 title: "Report a Bug",
                 systemImageName: "ant",
                 accessoryType: .none,
@@ -41,15 +48,13 @@ class SettingsTableViewController: UITableViewController {
                 systemImageName: "chevron.left.slash.chevron.right",
                 accessoryType: .none,
                 onClick: { (_) in
-                    let browser = SFSafariViewController(url: Self.sourceCodeUrl)
-                    browser.preferredControlTintColor = self.view.window?.tintColor
-                    browser.modalPresentationStyle = .popover
-                    self.present(browser, animated: true)
+                    self.presentBrowser(at: Self.sourceCodeUrl)
             }),
         ],
     ]
     
     private static let sourceCodeUrl = URL(string: "https://github.com/High5Apps/laser-spirograph")!
+    private static let privacyPolicyUrl = URL(string: "https://docs.google.com/document/d/16mbLSRJBjWGRGmZbMlCLgX2mozD2ukCKVFeqARRFtWc/edit?usp=sharing")!
     
     // MARK: Initialization
     
@@ -92,5 +97,14 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         presentingViewController?.dismiss(animated: true)
+    }
+    
+    // MARK: Web browsing
+    
+    private func presentBrowser(at url: URL) {
+        let browser = SFSafariViewController(url: url)
+        browser.preferredControlTintColor = self.view.window?.tintColor
+        browser.modalPresentationStyle = .popover
+        self.present(browser, animated: true)
     }
 }
