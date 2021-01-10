@@ -31,8 +31,22 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-hZ-035">
                                         <rect key="frame" x="83.5" y="422" width="247" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-IS-NVL" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GK3-9v-St7" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <color key="backgroundColor" systemColor="systemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="7YM-ao-MPe"/>
+                                                    <constraint firstAttribute="height" constant="50" id="vMp-G5-vnG"/>
+                                                </constraints>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="2po-x7-gzZ" kind="presentation" id="XWf-Ud-IPp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-IS-NVL" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
+                                                <rect key="frame" x="98.5" y="0.0" width="50" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="HuW-jI-bJw"/>
@@ -91,6 +105,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="20" y="89"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="YiX-Uf-st6">
+            <objects>
+                <tableViewController id="iHj-9X-cxT" customClass="SettingsTableViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1n6-Rz-1iv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="9at-lR-4zP">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9at-lR-4zP" id="TzD-nz-RTl">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iHj-9X-cxT" id="IMc-x5-61j"/>
+                            <outlet property="delegate" destination="iHj-9X-cxT" id="eQp-v9-JOY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="BvM-L8-9iq">
+                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="acn-b2-CHt">
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="iHj-9X-cxT" id="sKJ-rN-JuU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIe-YV-9t2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="1580"/>
         </scene>
         <!--Load Spiral-->
         <scene sceneID="UEn-Tt-Jee">
@@ -243,8 +292,27 @@
             </objects>
             <point key="canvasLocation" x="2767" y="88"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5ip-Az-Bav">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2po-x7-gzZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QnT-ER-S4g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iHj-9X-cxT" kind="relationship" relationship="rootViewController" id="LKD-M4-CyW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wLJ-z3-PeS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="833"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
