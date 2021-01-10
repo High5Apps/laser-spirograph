@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 struct Setting {
     let title: String
@@ -35,8 +36,20 @@ class SettingsTableViewController: UITableViewController {
                 onClick: { (_) in
                     EmailComposer.showBugReport(from: self)
             }),
+            Setting(
+                title: "Source Code",
+                systemImageName: "chevron.left.slash.chevron.right",
+                accessoryType: .none,
+                onClick: { (_) in
+                    let browser = SFSafariViewController(url: Self.sourceCodeUrl)
+                    browser.preferredControlTintColor = self.view.window?.tintColor
+                    browser.modalPresentationStyle = .popover
+                    self.present(browser, animated: true)
+            }),
         ],
     ]
+    
+    private static let sourceCodeUrl = URL(string: "https://github.com/High5Apps/laser-spirograph")!
     
     // MARK: Initialization
     
@@ -72,6 +85,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let setting = settings[indexPath.section]?[indexPath.row], let cell = tableView.cellForRow(at: indexPath) else { return }
         setting.onClick(cell)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: Dismissing
