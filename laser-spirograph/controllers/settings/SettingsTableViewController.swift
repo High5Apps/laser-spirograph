@@ -30,18 +30,20 @@ class SettingsTableViewController: UITableViewController {
                     EmailComposer.show(from: self, with: subject)
             }),
             Setting(
-                title: "Privacy Policy",
-                systemImageName: "doc",
-                accessoryType: .none,
-                onClick: { (_) in
-                    self.presentBrowser(at: Self.privacyPolicyUrl)
-            }),
-            Setting(
                 title: "Report a Bug",
                 systemImageName: "ant",
                 accessoryType: .none,
                 onClick: { (_) in
                     EmailComposer.showBugReport(from: self)
+            }),
+        ],
+        1: [
+            Setting(
+                title: "Privacy Policy",
+                systemImageName: "doc",
+                accessoryType: .none,
+                onClick: { (_) in
+                    self.presentBrowser(at: Self.privacyPolicyUrl)
             }),
             Setting(
                 title: "Source Code",
@@ -79,12 +81,22 @@ class SettingsTableViewController: UITableViewController {
         
         if let setting = settings[indexPath.section]?[indexPath.row] {
             cell.imageView?.image = UIImage(systemName: setting.systemImageName)
-            cell.imageView?.tintColor = .label
             cell.textLabel?.text = setting.title
             cell.accessoryType = setting.accessoryType
         }
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Communication"
+        case 1:
+            return "About"
+        default:
+            return nil
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
