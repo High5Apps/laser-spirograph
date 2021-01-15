@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         canvas.backgroundColor = .secondarySystemFill
         
         UIView.animate(withDuration: 1) {
-            self.canvas.transform = self.getTransformFromCanvasToLoadButton()
+            self.canvas.transform = self.getTransform(from: self.canvas, to: self.loadSpiralButon)
         } completion: { (finished) in
             self.canvas.layer.cornerRadius = 0
             self.canvas.backgroundColor = previousBackgroundColor
@@ -113,14 +113,15 @@ class ViewController: UIViewController {
         }
     }
     
-    private func getTransformFromCanvasToLoadButton() -> CGAffineTransform {
-        let scaleX = loadSpiralButon.bounds.width / canvas.bounds.width
-        let scaleY = loadSpiralButon.bounds.height / canvas.bounds.height
+    private func getTransform(from start: UIView, to destination: UIView) -> CGAffineTransform {
+        let scaleX = destination.bounds.width / start.bounds.width
+        let scaleY = destination.bounds.height / start.bounds.height
         let scaleTransform = CGAffineTransform(scaleX: scaleX, y: scaleY)
         
-        let convertedCenter = loadSpiralButon.convert(loadSpiralButon.center, to: canvas)
-        let centerDeltaX = convertedCenter.x - canvas.center.x
-        let centerDeltaY = convertedCenter.y - canvas.center.y
+        let destinationMiddle = CGPoint(x: destination.bounds.midX, y: destination.bounds.midY)
+        let convertedCenter = destination.convert(destinationMiddle, to: start)
+        let centerDeltaX = convertedCenter.x - start.center.x
+        let centerDeltaY = convertedCenter.y - start.center.y
         let translationTransform = CGAffineTransform(translationX: centerDeltaX, y: centerDeltaY)
         
         return scaleTransform.concatenating(translationTransform)
