@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var canvas: LSCanvas!
     @IBOutlet weak var multisliderView: LSMultisliderView!
-    @IBOutlet weak var loadSpiralButon: LSCircleButton!
+    @IBOutlet weak var loadSpiralButton: LSCircleButton!
     
     private var spiralController = LSSpiralController()
     
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         canvas.backgroundColor = .secondarySystemFill
         
         UIView.animate(withDuration: 1) {
-            self.canvas.transform = self.getTransform(from: self.canvas, to: self.loadSpiralButon)
+            self.canvas.transform = self.getTransform(from: self.canvas, to: self.loadSpiralButton)
         } completion: { (finished) in
             self.canvas.layer.cornerRadius = 0
             self.canvas.backgroundColor = previousBackgroundColor
