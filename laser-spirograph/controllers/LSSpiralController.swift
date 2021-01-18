@@ -20,7 +20,8 @@ class LSSpiralController {
         didSet {
             guard isAnimating != oldValue else { return }
             if isAnimating {
-                drawTimer = Timer.scheduledTimer(withTimeInterval: Self.refreshRate, repeats: true) { (_) in
+                drawTimer = Timer.scheduledTimer(withTimeInterval: Self.refreshRate, repeats: true) { [weak self] (_) in
+                    guard let self = self else { return }
                     self.elapsedAnimationTime += Self.refreshRate
                     self.draw()
                 }
@@ -41,6 +42,12 @@ class LSSpiralController {
     private static let persistenceOfVision: TimeInterval = 1 / 16
     private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
     private static let refreshRate: Double = 1 / 24
+    
+    // MARK: Deinit
+    
+    deinit {
+        drawTimer?.invalidate()
+    }
     
     // MARK: Parameter sets
     
