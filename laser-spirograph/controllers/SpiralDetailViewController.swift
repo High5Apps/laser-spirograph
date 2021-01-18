@@ -35,7 +35,7 @@ class SpiralDetailViewController: UIViewController {
         spiralController.canvas = canvas
         
         nameField.delegate = self
-        adjustScrollViewOnKeyboardEvents(scrollView)
+        adjustScrollViewOnKeyboardEvents()
         
         parameterStepperContainer.addParameterStepper(name: "Start", step: 0.01, precision: 2)
         parameterStepperContainer.addParameterStepper(name: "Span", step: 0.0005, precision: 4)
@@ -99,6 +99,28 @@ extension SpiralDetailViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         updateName()
         return true
+    }
+}
+
+extension SpiralDetailViewController {
+    
+    private func adjustScrollViewOnKeyboardEvents() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom + 8, right: 0)
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        scrollView.flashScrollIndicators()
+    }
+    
+    @objc private func keyboardWillHide() {
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
 }
 
