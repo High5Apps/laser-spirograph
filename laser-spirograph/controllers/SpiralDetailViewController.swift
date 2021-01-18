@@ -39,6 +39,7 @@ class SpiralDetailViewController: UIViewController {
         
         parameterStepperContainer.addParameterStepper(name: "Start", step: 0.01, precision: 2)
         parameterStepperContainer.addParameterStepper(name: "Span", step: 0.0005, precision: 4)
+        parameterStepperContainer.addParameterStepper(name: "Run time", step: 0.5, precision: 1)
         parameterStepperContainer.delegate = self
         
         load(parameterSet)
@@ -136,6 +137,9 @@ extension SpiralDetailViewController: LSParameterStepperContainerDelegate {
             parameterSet.endTime = value + span
         case 1:
             parameterSet.endTime = parameterSet.startTime + value
+        case 2:
+            spiralController.maxAnimationDuration = value
+            spiralController.isAnimating = (value > 0)
         default:
             fatalError("You must handle the new parameter stepper value change")
         }

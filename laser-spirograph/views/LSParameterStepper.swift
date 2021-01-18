@@ -32,8 +32,12 @@ class LSParameterStepper: UIView {
     private var stepper: UIStepper!
     private var divider: UIView!
     private var name: String!
-    private var unit: String!
+    private var pluralUnit: String!
     private var precision: Int!
+    
+    private var singularUnit: String {
+        pluralUnit.hasSuffix("s") ? String(pluralUnit.dropLast()) : pluralUnit
+    }
     
     private static let padding: CGFloat = 8
     
@@ -95,7 +99,7 @@ class LSParameterStepper: UIView {
     
     func setParameter(_ value: Double, name: String, step: Double, precision: Int, unit: String = "seconds", minValue: Double = 0, maxValue: Double = Double.infinity) {
         self.name = name
-        self.unit = unit
+        pluralUnit = unit
         self.precision = precision
         
         stepper.minimumValue = minValue
@@ -105,6 +109,7 @@ class LSParameterStepper: UIView {
     }
     
     private func updateLabel() {
+        let unit = (abs(value) == 1) ? singularUnit : pluralUnit
         label.text = "\(name!): \(String(format: "%.\(precision!)f", stepper.value)) \(unit!)"
     }
     

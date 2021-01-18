@@ -22,7 +22,7 @@ class LSSpiralController {
             if isAnimating {
                 drawTimer = Timer.scheduledTimer(withTimeInterval: Self.refreshRate, repeats: true) { [weak self] (_) in
                     guard let self = self else { return }
-                    self.elapsedAnimationTime += Self.refreshRate
+                    self.elapsedAnimationTime = (self.elapsedAnimationTime + Self.refreshRate).truncatingRemainder(dividingBy: self.maxAnimationDuration)
                     self.draw()
                 }
             } else {
@@ -30,6 +30,12 @@ class LSSpiralController {
             }
         }
     }
+    
+    var maxAnimationDuration: TimeInterval {
+        get { _maxAnimationDuration }
+        set { _maxAnimationDuration = (newValue > 0) ? newValue : .greatestFiniteMagnitude }
+    }
+    private var _maxAnimationDuration: TimeInterval = .greatestFiniteMagnitude
     
     var drawResolution: Int = 256
     
