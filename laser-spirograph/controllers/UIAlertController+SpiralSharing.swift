@@ -24,23 +24,26 @@ extension UIAlertController {
         optionSheet.view.tintColor = presentingViewController.view.window?.tintColor
         
         let optionHandler: OptionHandler = { (alert) in
-            let format = SpiralExportFormat(rawValue: alert.title!)!
-            let data = imageData(with: format, using: spiralController)
-            let fileName = "\(spiralName).\(format.rawValue.lowercased())"
-            
-            guard let url = save(data, with: fileName) else {
-                let alert = UIAlertController.okAlert(title: "Failed to create file", message: "Please try again later")
-                presentingViewController.present(alert, animated: true)
-                return
-            }
-            
-            let shareController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            shareController.popoverPresentationController?.barButtonItem = barButtonItem
-            shareController.completionWithItemsHandler = fileCleanupHandler(for: url)
-            
             addActivityIndicator(nextTo: barButtonItem)
-            presentingViewController.present(shareController, animated: true) {
-                removeActivityIndicator(nextTo: barButtonItem)
+
+            let format = SpiralExportFormat(rawValue: alert.title!)!
+            imageData(with: format, using: spiralController) { (data) in                
+                let fileName = "\(spiralName).\(format.rawValue.lowercased())"
+                
+                guard let url = save(data, with: fileName) else {
+                    let alert = UIAlertController.okAlert(title: "Failed to create file", message: "Please try again later")
+                    removeActivityIndicator(nextTo: barButtonItem)
+                    presentingViewController.present(alert, animated: true)
+                    return
+                }
+                
+                let shareController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                shareController.popoverPresentationController?.barButtonItem = barButtonItem
+                shareController.completionWithItemsHandler = fileCleanupHandler(for: url)
+                
+                presentingViewController.present(shareController, animated: true) {
+                    removeActivityIndicator(nextTo: barButtonItem)
+                }
             }
         }
         
@@ -71,15 +74,17 @@ extension UIAlertController {
         optionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     }
     
-    private class func imageData(with format: SpiralExportFormat, using spiralController: LSSpiralController) -> Data? {
-        switch format {
-        case .svg:
-            let exporter = spiralController.getSvgExporter()
-            return exporter?.description.data(using: .utf8)
-        case .jpeg:
-            return spiralController.getImage()?.jpegData(compressionQuality: 1.0)
-        case .png:
-            return spiralController.getImage()?.pngData()
+    private class func imageData(with format: SpiralExportFormat, using spiralController: LSSpiralController, completion: @escaping (Data?) -> ()) {
+        DispatchQueue.main.async {
+            switch format {
+            case .svg:
+                let exporter = spiralController.getSvgExporter()
+                completion(exporter?.description.data(using: .utf8))
+            case .jpeg:
+                completion(spiralController.getImage()?.jpegData(compressionQuality: 1.0))
+            case .png:
+                completion(spiralController.getImage()?.pngData())
+            }
         }
     }
     
