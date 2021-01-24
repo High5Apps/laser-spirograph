@@ -8,16 +8,11 @@
 import UIKit
 import os.log
 
-enum SpiralExportFormat: String, CaseIterable {
-    case svg = "SVG"
-    case jpeg = "JPEG"
-    case png = "PNG"
-    case gif = "GIF"
-}
-
 private typealias OptionHandler = (UIAlertAction) -> ()
 
 extension UIAlertController {
+    
+    // MARK: Initialization
 
     class func spiralShareController(spiralName: String, spiralController: LSSpiralController, presentedFrom barButtonItem: UIBarButtonItem, presentingViewController: UIViewController) -> UIAlertController {
         let optionSheet = UIAlertController(title: "Share as", message: nil, preferredStyle: .actionSheet)
@@ -53,6 +48,8 @@ extension UIAlertController {
         return optionSheet
     }
     
+    // MARK: Activity Indicator
+    
     private class func addActivityIndicator(nextTo barButtonItem: UIBarButtonItem) {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.color = .label
@@ -65,6 +62,15 @@ extension UIAlertController {
     private class func removeActivityIndicator(nextTo barButtonItem: UIBarButtonItem) {
         guard let buttonGroup = barButtonItem.buttonGroup, buttonGroup.barButtonItems.last?.customView is UIActivityIndicatorView else { return }
         buttonGroup.barButtonItems.removeLast()
+    }
+    
+    // MARK: Sharing options
+    
+    private enum SpiralExportFormat: String, CaseIterable {
+        case svg = "SVG"
+        case jpeg = "JPEG"
+        case png = "PNG"
+        case gif = "GIF"
     }
     
     private class func addOptions(to optionSheet: UIAlertController, with optionHandler: @escaping OptionHandler) {
@@ -90,6 +96,8 @@ extension UIAlertController {
             }
         }
     }
+    
+    // MARK: File operations
     
     private class func save(_ data: Data?, with fileName: String) -> URL? {
         guard let data = data else { return nil }
