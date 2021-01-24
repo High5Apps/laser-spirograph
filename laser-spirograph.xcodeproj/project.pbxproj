@@ -12,6 +12,7 @@
 		C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
 		C22F269C2588401C001E2463 /* LSCircleCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */; };
 		C230842B258300230042EBCA /* LSCircleCombinerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C230842A258300220042EBCA /* LSCircleCombinerTests.swift */; };
+		C23193A125BD024D00D77239 /* LSGifBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23193A025BD024D00D77239 /* LSGifBuilder.swift */; };
 		C2444E12258D34C200886845 /* LSSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2444E11258D34C200886845 /* LSSpiralController.swift */; };
 		C2444E1C258D4A8300886845 /* LSParameterSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2444E1B258D4A8300886845 /* LSParameterSetCell.swift */; };
 		C2559A63258455BE00CB95BB /* LSCircleCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */; };
@@ -62,6 +63,7 @@
 		A64A78598698828BAC0EC36D /* Pods_laser_spirograph_tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_laser_spirograph_tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C204ED1E25805CAC0024F693 /* LSCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircle.swift; sourceTree = "<group>"; };
 		C230842A258300220042EBCA /* LSCircleCombinerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleCombinerTests.swift; sourceTree = "<group>"; };
+		C23193A025BD024D00D77239 /* LSGifBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSGifBuilder.swift; sourceTree = "<group>"; };
 		C2444E11258D34C200886845 /* LSSpiralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSSpiralController.swift; sourceTree = "<group>"; };
 		C2444E1B258D4A8300886845 /* LSParameterSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LSParameterSetCell.swift; path = "/Users/JulianTigler/git/laser-spirograph/laser-spirograph/views/LSParameterSetCell.swift"; sourceTree = "<absolute>"; };
 		C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleCombiner.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */,
 				C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */,
 				C2C2335325897D2300CA5E44 /* LSDataModel.xcdatamodeld */,
+				C23193A025BD024D00D77239 /* LSGifBuilder.swift */,
 				C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */,
 				C2C484582577645100F17D7D /* Parameterizable.swift */,
 				C2DEAC2B2593D7A400FF153C /* LSSvgPath.swift */,
@@ -424,6 +427,7 @@
 				C26009D82582BA2E00278867 /* LSMultisliderView.swift in Sources */,
 				C2DA4030258AD0FC00293577 /* UIAlertController+CommonAlerts.swift in Sources */,
 				C2DFF3812595251D006B6EDD /* UIAlertController+SpiralSharing.swift in Sources */,
+				C23193A125BD024D00D77239 /* LSGifBuilder.swift in Sources */,
 				C2559A63258455BE00CB95BB /* LSCircleCombiner.swift in Sources */,
 				C2AE74E22591377900EB158E /* LSParameterStepperContainer.swift in Sources */,
 				C2C484592577645100F17D7D /* Parameterizable.swift in Sources */,
