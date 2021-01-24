@@ -12,6 +12,7 @@ enum SpiralExportFormat: String, CaseIterable {
     case svg = "SVG"
     case jpeg = "JPEG"
     case png = "PNG"
+    case gif = "GIF"
 }
 
 private typealias OptionHandler = (UIAlertAction) -> ()
@@ -84,6 +85,8 @@ extension UIAlertController {
                 completion(spiralController.getImage()?.jpegData(compressionQuality: 1.0))
             case .png:
                 completion(spiralController.getImage()?.pngData())
+            case .gif:
+                spiralController.gifData() { completion($0) }
             }
         }
     }

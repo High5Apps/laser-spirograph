@@ -43,11 +43,24 @@ class LSSpiralController {
     private var loadedParameterSet: LSParameterSet?
     private var elapsedAnimationTime: TimeInterval = 0
     
+    private var gifRunTime: TimeInterval {
+        let runTimeWithoutLastFrameRemoved: TimeInterval
+        if maxAnimationDuration > Self.maxGifRunTime {
+            let isMaxAnimationDurationSet = maxAnimationDuration < .greatestFiniteMagnitude
+            runTimeWithoutLastFrameRemoved = isMaxAnimationDurationSet ? Self.maxGifRunTime : Self.defaultGifRunTime
+        } else {
+            runTimeWithoutLastFrameRemoved = maxAnimationDuration
+        }
+        return runTimeWithoutLastFrameRemoved - Self.refreshRate
+    }
+    
     private let circleCombiner = LSCircleCombiner(radii: radii)!
     
     private static let persistenceOfVision: TimeInterval = 1 / 16
     private static let radii = [0.4, 0.1, 0.3, 0.2] // These should sum to 1 to span the canvas
     private static let refreshRate: Double = 1 / 24
+    private static let defaultGifRunTime: TimeInterval = 2.5
+    private static let maxGifRunTime: TimeInterval = 60
     
     // MARK: Deinit
     
@@ -87,18 +100,14 @@ class LSSpiralController {
     
     private func spiralStartTime(elapsedTime: TimeInterval) -> TimeInterval {
         if let loadedParameterSet = loadedParameterSet, !isAnimating {
-            return loadedParameterSet.startTime
+            return loadedParameterSet.startTime + elapsedTime
         } else {
             return spiralEndTime(elapsedTime: elapsedTime) - Self.persistenceOfVision
         }
     }
     
     private func spiralEndTime(elapsedTime: TimeInterval) -> TimeInterval {
-        var t = (loadedParameterSet?.endTime ?? 0)
-        if isAnimating {
-            t += elapsedTime
-        }
-        return t
+        return (loadedParameterSet?.endTime ?? 0) + elapsedTime
     }
     
     private func draw() {
@@ -107,6 +116,34 @@ class LSSpiralController {
     }
     
     // MARK: Sharing
+    
+    func gifData(completion: @escaping (Data?) -> ()) {
+        let initialElapsedTime = elapsedAnimationTime
+        let gifBuilder = LSGifBuilder(refreshRate: Self.refreshRate)
+        addGifFrames(to: gifBuilder, totalRunTime: gifRunTime) { (data) in
+            self.elapsedAnimationTime = initialElapsedTime
+            completion(data)
+        }
+    }
+    
+    private func addGifFrames(to gifBuilder: LSGifBuilder, elapsedTime: TimeInterval = 0, totalRunTime: TimeInterval, completion: @escaping (Data?) -> ()) {
+        DispatchQueue.main.async {
+            self.elapsedAnimationTime = elapsedTime
+            self.draw()
+            guard let image = self.getImage() else {
+                completion(nil)
+                return
+            }
+            gifBuilder.addImage(image)
+
+            guard elapsedTime < totalRunTime else {
+                completion(gifBuilder.getData())
+                return
+            }
+
+            self.addGifFrames(to: gifBuilder, elapsedTime: elapsedTime + Self.refreshRate, totalRunTime: totalRunTime, completion: completion)
+        }
+    }
     
     func getImage() -> UIImage? {
         guard let view = canvas else { return nil }
