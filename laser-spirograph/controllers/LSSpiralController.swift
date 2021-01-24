@@ -146,17 +146,7 @@ class LSSpiralController {
     }
     
     func getImage() -> UIImage? {
-        guard let view = canvas else { return nil }
-        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
-        return renderer.image { context in
-            UIColor.black.setFill()
-            context.fill(view.bounds)
-            
-            let previousBackgroundColor = view.backgroundColor
-            view.backgroundColor = .clear
-            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-            view.backgroundColor = previousBackgroundColor
-        }
+        canvas?.getImage()
     }
     
     func getSvgExporter() -> LSSvgExporter? {

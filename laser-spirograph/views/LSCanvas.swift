@@ -127,4 +127,17 @@ class LSCanvas: UIView {
         
         return LSSvgExporter(path: svgPath, bounds: bounds, strokeWidth: Self.lineWidthMultiplier, strokeColor: color, pathTransform: pathTransform)
     }
+    
+    func getImage() -> UIImage? {
+        let renderer = UIGraphicsImageRenderer(size: bounds.size)
+        return renderer.image { context in
+            UIColor.black.setFill()
+            context.fill(bounds)
+            
+            let previousBackgroundColor = backgroundColor
+            backgroundColor = .clear
+            drawHierarchy(in: bounds, afterScreenUpdates: true)
+            backgroundColor = previousBackgroundColor
+        }
+    }
 }
