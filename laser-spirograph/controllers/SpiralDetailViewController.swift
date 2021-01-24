@@ -83,7 +83,11 @@ class SpiralDetailViewController: UIViewController {
     // MARK: Sharing
     
     @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
-        let spiralShareController = UIAlertController.spiralShareController(spiralName: parameterSet.displayName, spiralController: spiralController, presentedFrom: sender, presentingViewController: self)
+        let wasAnimating = spiralController.isAnimating
+        spiralController.isAnimating = false
+        let spiralShareController = UIAlertController.spiralShareController(spiralName: parameterSet.displayName, spiralController: spiralController, presentedFrom: sender, presentingViewController: self) {
+            self.spiralController.isAnimating = wasAnimating
+        }
         present(spiralShareController, animated: true)
     }
 }

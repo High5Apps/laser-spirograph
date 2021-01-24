@@ -14,7 +14,7 @@ extension UIAlertController {
     
     // MARK: Initialization
 
-    class func spiralShareController(spiralName: String, spiralController: LSSpiralController, presentedFrom barButtonItem: UIBarButtonItem, presentingViewController: UIViewController) -> UIAlertController {
+    class func spiralShareController(spiralName: String, spiralController: LSSpiralController, presentedFrom barButtonItem: UIBarButtonItem, presentingViewController: UIViewController, completion: @escaping () -> ()) -> UIAlertController {
         let optionSheet = UIAlertController(title: "Share as", message: nil, preferredStyle: .actionSheet)
         optionSheet.popoverPresentationController?.barButtonItem = barButtonItem
         optionSheet.view.tintColor = presentingViewController.view.window?.tintColor
@@ -27,7 +27,7 @@ extension UIAlertController {
                 let fileName = "\(spiralName).\(format.rawValue.lowercased())"
                 
                 guard let url = save(data, with: fileName) else {
-                    let alert = UIAlertController.okAlert(title: "Failed to create file", message: "Please try again later")
+                    let alert = UIAlertController.okAlert(title: "Failed to create file", message: "Please try again later", completion: completion)
                     removeActivityIndicator(nextTo: barButtonItem)
                     presentingViewController.present(alert, animated: true)
                     return
@@ -35,7 +35,7 @@ extension UIAlertController {
                 
                 let shareController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                 shareController.popoverPresentationController?.barButtonItem = barButtonItem
-                shareController.completionWithItemsHandler = fileCleanupHandler(for: url)
+                shareController.completionWithItemsHandler = fileCleanupHandler(for: url, completion: completion)
                 
                 presentingViewController.present(shareController, animated: true) {
                     removeActivityIndicator(nextTo: barButtonItem)
@@ -43,7 +43,7 @@ extension UIAlertController {
             }
         }
         
-        addOptions(to: optionSheet, with: optionHandler)
+        addOptions(to: optionSheet, with: optionHandler, completionHandler: completion)
         
         return optionSheet
     }
@@ -73,12 +73,12 @@ extension UIAlertController {
         case gif = "GIF"
     }
     
-    private class func addOptions(to optionSheet: UIAlertController, with optionHandler: @escaping OptionHandler) {
+    private class func addOptions(to optionSheet: UIAlertController, with optionHandler: @escaping OptionHandler, completionHandler: @escaping () -> ()) {
         SpiralExportFormat.allCases.forEach() {
             optionSheet.addAction(UIAlertAction(title: $0.rawValue, style: .default, handler: optionHandler))
         }
         
-        optionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        optionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in completionHandler() }))
     }
     
     private class func imageData(with format: SpiralExportFormat, using spiralController: LSSpiralController, completion: @escaping (Data?) -> ()) {
@@ -116,10 +116,11 @@ extension UIAlertController {
         return url
     }
     
-    private class func fileCleanupHandler(for url: URL) -> UIActivityViewController.CompletionWithItemsHandler {
+    private class func fileCleanupHandler(for url: URL, completion: @escaping () -> ()) -> UIActivityViewController.CompletionWithItemsHandler {
         { (activityType, completed, _, _) in
             guard completed || (activityType == nil) else { return }
             deleteFile(at: url)
+            completion()
         }
     }
     
