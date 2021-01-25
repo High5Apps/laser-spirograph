@@ -28,6 +28,14 @@ class LSCanvas: UIView {
     }
     private var color: CGColor { window?.tintColor.cgColor ?? UIColor.clear.cgColor }
     
+    private var filledLogo: UIImage? {
+        if _filledLogo == nil {
+            _filledLogo = UIImage(named: "logo-filled")
+        }
+        return _filledLogo
+    }
+    private var _filledLogo: UIImage?
+    
     private static let lineWidthMultiplier: CGFloat = 2 / 85
     
     // MARK: Initialization
@@ -138,6 +146,12 @@ class LSCanvas: UIView {
             backgroundColor = .clear
             drawHierarchy(in: bounds, afterScreenUpdates: true)
             backgroundColor = previousBackgroundColor
+            
+            guard let filledLogo = filledLogo else { return }
+            let logoWidth = canvasRadius / 2
+            let logoHeight = logoWidth * (filledLogo.size.height / filledLogo.size.width)
+            let logoRect = CGRect(x: bounds.maxX - logoWidth, y: bounds.maxY - logoHeight, width: logoWidth, height: logoHeight)
+            filledLogo.draw(in: logoRect, blendMode: .normal, alpha: 0.5)
         }
     }
 }
