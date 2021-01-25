@@ -116,7 +116,6 @@ class SettingsTableViewController: UITableViewController {
     private func presentBrowser(at url: URL) {
         let browser = SFSafariViewController(url: url)
         browser.preferredControlTintColor = self.view.window?.tintColor
-        browser.modalPresentationStyle = .popover
         self.present(browser, animated: true)
     }
 }
