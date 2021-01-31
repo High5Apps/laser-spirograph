@@ -33,6 +33,8 @@ class SpiralColorViewController: UIViewController {
         super.viewDidLoad()
 
         collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.contentInset = UIEdgeInsets(top: Self.margin, left: Self.margin, bottom: Self.margin, right: Self.margin)
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,10 +42,15 @@ class SpiralColorViewController: UIViewController {
         
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         let rowWidth = collectionView.frame.size.width
-        let itemWidth = (rowWidth - CGFloat(Self.itemsPerRow - 1) * Self.margin) / CGFloat(Self.itemsPerRow)
+        let itemWidth = (rowWidth - CGFloat(Self.itemsPerRow + 1) * Self.margin) / CGFloat(Self.itemsPerRow)
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
         flowLayout.minimumLineSpacing = Self.margin
         flowLayout.minimumInteritemSpacing = Self.margin
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
     }
 }
 
@@ -62,5 +69,12 @@ extension SpiralColorViewController: UICollectionViewDataSource {
         }
                         
         return item
+    }
+}
+
+extension SpiralColorViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedColor = colors[indexPath.item]
+        view.window?.tintColor = selectedColor
     }
 }

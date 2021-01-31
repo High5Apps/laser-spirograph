@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         window?.overrideUserInterfaceStyle = .dark
-        window?.tintColor = UIColor(red: 101/255.0, green: 1.0, blue: 0.0, alpha: 1.0)
+        window?.tintColor = UIColor.LSColors.Green532Nanometers
         window?.makeKeyAndVisible()
         
         guard let viewController = window?.rootViewController as? ViewController, let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
