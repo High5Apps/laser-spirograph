@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import CoreData
 
 struct Setting {
     let title: String
@@ -18,6 +19,8 @@ struct Setting {
 class SettingsTableViewController: UITableViewController {
     
     // MARK: Properties
+    
+    var managedObjectContext: NSManagedObjectContext?
     
     private lazy var settings: [Int: [Setting]] = [
         0: [
@@ -73,6 +76,14 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView() // Hides empty rows
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let spiralColorVC = segue.destination as? SpiralColorViewController {
+            spiralColorVC.managedObjectContext = managedObjectContext
+        }
     }
 
     // MARK: UITableViewDataSource

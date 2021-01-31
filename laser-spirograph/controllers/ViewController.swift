@@ -62,6 +62,8 @@ class ViewController: UIViewController {
         if let spiralsTVC = navigationController.topViewController as? SpiralsTableViewController {
             spiralsTVC.managedObjectContext = managedObjectContext
             spiralsTVC.delegate = self
+        } else if let settingsTVC = navigationController.topViewController as? SettingsTableViewController {
+            settingsTVC.managedObjectContext = managedObjectContext
         }
         
         willPresent(navigationController)

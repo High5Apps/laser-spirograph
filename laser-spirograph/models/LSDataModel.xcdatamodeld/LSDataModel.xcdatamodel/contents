@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LSColorProvider" representedClassName="LSColorProvider" syncable="YES">
+        <attribute name="primaryColor" attributeType="Transformable" valueTransformerName="ColorValueTransformer" customClassName="UIColor"/>
+    </entity>
     <entity name="LSParameterSet" representedClassName="LSParameterSet" syncable="YES" codeGenerationType="category">
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="endTime" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -16,5 +19,6 @@
     </entity>
     <elements>
         <element name="LSParameterSet" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="LSColorProvider" positionX="-63" positionY="81" width="128" height="44"/>
     </elements>
 </model>

@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import CoreData.NSManagedObjectContext
 
 class SpiralColorViewController: UIViewController {
     
     // MARK: Properties
+    
+    var managedObjectContext: NSManagedObjectContext?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -35,6 +38,21 @@ class SpiralColorViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: Self.margin, left: Self.margin, bottom: Self.margin, right: Self.margin)
+        
+        setInitialColor()
+    }
+    
+    private func setInitialColor() {
+        var selectedColorIndex = 0
+        if let context = managedObjectContext {
+            let selectedColor = LSColorProvider.shared(context: context).primaryColor
+            if let selectedIndex = colors.firstIndex(of: selectedColor) {
+                selectedColorIndex = selectedIndex
+            }
+        }
+        
+        let selectedIndexPath = IndexPath(item: selectedColorIndex, section: 0)
+        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: [])
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,11 +64,6 @@ class SpiralColorViewController: UIViewController {
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
         flowLayout.minimumLineSpacing = Self.margin
         flowLayout.minimumInteritemSpacing = Self.margin
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: [])
     }
 }
 
@@ -76,5 +89,10 @@ extension SpiralColorViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedColor = colors[indexPath.item]
         view.window?.tintColor = selectedColor
+
+        guard let context = managedObjectContext else { return }
+        let sharedColorProvider = LSColorProvider.shared(context: context)
+        sharedColorProvider.primaryColor = selectedColor
+        sharedColorProvider.save()
     }
 }
