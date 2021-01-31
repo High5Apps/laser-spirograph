@@ -10,6 +10,9 @@
 		00DEB81A6FB400E90022E5E6 /* Pods_laser_spirograph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0649B35AFB32C835B1F91D80 /* Pods_laser_spirograph.framework */; };
 		2C07673E9C263EA5906B3754 /* Pods_laser_spirograph_tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64A78598698828BAC0EC36D /* Pods_laser_spirograph_tests.framework */; };
 		C204ED1F25805CAC0024F693 /* LSCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204ED1E25805CAC0024F693 /* LSCircle.swift */; };
+		C21269CA25C697C500FE2984 /* SpiralColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21269C925C697C500FE2984 /* SpiralColorViewController.swift */; };
+		C21269CE25C698ED00FE2984 /* LSColorChipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21269CD25C698ED00FE2984 /* LSColorChipCollectionViewCell.swift */; };
+		C21269D425C6A35200FE2984 /* UIColor+LSColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21269D325C6A35200FE2984 /* UIColor+LSColors.swift */; };
 		C22F269C2588401C001E2463 /* LSCircleCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */; };
 		C230842B258300230042EBCA /* LSCircleCombinerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C230842A258300220042EBCA /* LSCircleCombinerTests.swift */; };
 		C23193A125BD024D00D77239 /* LSGifBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23193A025BD024D00D77239 /* LSGifBuilder.swift */; };
@@ -62,6 +65,9 @@
 		A1C947429D4188894A7ED066 /* Pods-laser-spirograph.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-laser-spirograph.debug.xcconfig"; path = "Target Support Files/Pods-laser-spirograph/Pods-laser-spirograph.debug.xcconfig"; sourceTree = "<group>"; };
 		A64A78598698828BAC0EC36D /* Pods_laser_spirograph_tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_laser_spirograph_tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C204ED1E25805CAC0024F693 /* LSCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircle.swift; sourceTree = "<group>"; };
+		C21269C925C697C500FE2984 /* SpiralColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralColorViewController.swift; sourceTree = "<group>"; };
+		C21269CD25C698ED00FE2984 /* LSColorChipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSColorChipCollectionViewCell.swift; sourceTree = "<group>"; };
+		C21269D325C6A35200FE2984 /* UIColor+LSColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+LSColors.swift"; sourceTree = "<group>"; };
 		C230842A258300220042EBCA /* LSCircleCombinerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleCombinerTests.swift; sourceTree = "<group>"; };
 		C23193A025BD024D00D77239 /* LSGifBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSGifBuilder.swift; sourceTree = "<group>"; };
 		C2444E11258D34C200886845 /* LSSpiralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSSpiralController.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				C268C44525AAFE4C0088981F /* SettingsTableViewController.swift */,
+				C21269C925C697C500FE2984 /* SpiralColorViewController.swift */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -195,6 +202,7 @@
 				C2C484582577645100F17D7D /* Parameterizable.swift */,
 				C2DEAC2B2593D7A400FF153C /* LSSvgPath.swift */,
 				C2A2C1792594290400662D1D /* LSSvgExporter.swift */,
+				C21269D325C6A35200FE2984 /* UIColor+LSColors.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -204,6 +212,7 @@
 			children = (
 				C2C4844C257711E000F17D7D /* LSCanvas.swift */,
 				C2C432CC258950FE00FBECE4 /* LSCircleButton.swift */,
+				C21269CD25C698ED00FE2984 /* LSColorChipCollectionViewCell.swift */,
 				C26009D72582BA2E00278867 /* LSMultisliderView.swift */,
 				C2444E1B258D4A8300886845 /* LSParameterSetCell.swift */,
 				C2659198258EC1E600B16606 /* LSParameterStepper.swift */,
@@ -429,15 +438,18 @@
 				C2DFF3812595251D006B6EDD /* UIAlertController+SpiralSharing.swift in Sources */,
 				C23193A125BD024D00D77239 /* LSGifBuilder.swift in Sources */,
 				C2559A63258455BE00CB95BB /* LSCircleCombiner.swift in Sources */,
+				C21269D425C6A35200FE2984 /* UIColor+LSColors.swift in Sources */,
 				C2AE74E22591377900EB158E /* LSParameterStepperContainer.swift in Sources */,
 				C2C484592577645100F17D7D /* Parameterizable.swift in Sources */,
 				C2C48438257710E100F17D7D /* AppDelegate.swift in Sources */,
+				C21269CA25C697C500FE2984 /* SpiralColorViewController.swift in Sources */,
 				C2C432CD258950FE00FBECE4 /* LSCircleButton.swift in Sources */,
 				C2C4843A257710E100F17D7D /* SceneDelegate.swift in Sources */,
 				C2C2335525897D2300CA5E44 /* LSDataModel.xcdatamodeld in Sources */,
 				C2659199258EC1E600B16606 /* LSParameterStepper.swift in Sources */,
 				C268C44625AAFE4C0088981F /* SettingsTableViewController.swift in Sources */,
 				C2DA9A5525830ACA00BE07B9 /* LSConstantFunction.swift in Sources */,
+				C21269CE25C698ED00FE2984 /* LSColorChipCollectionViewCell.swift in Sources */,
 				C2C4844D257711E000F17D7D /* LSCanvas.swift in Sources */,
 				C2444E1C258D4A8300886845 /* LSParameterSetCell.swift in Sources */,
 			);

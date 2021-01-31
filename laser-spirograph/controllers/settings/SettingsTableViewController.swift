@@ -22,6 +22,15 @@ class SettingsTableViewController: UITableViewController {
     private lazy var settings: [Int: [Setting]] = [
         0: [
             Setting(
+                title: "Color",
+                systemImageName: "paintpalette",
+                accessoryType: .disclosureIndicator,
+                onClick: { (_) in
+                    self.performSegue(withIdentifier: "ShowSpiralColorViewController", sender: self)
+                })
+        ],
+        1: [
+            Setting(
                 title: "Contact Us",
                 systemImageName: "message",
                 accessoryType: .none,
@@ -37,7 +46,7 @@ class SettingsTableViewController: UITableViewController {
                     EmailComposer.showBugReport(from: self)
             }),
         ],
-        1: [
+        2: [
             Setting(
                 title: "Privacy Policy",
                 systemImageName: "doc",
@@ -91,8 +100,10 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Communication"
+            return "Spiral"
         case 1:
+            return "Communication"
+        case 2:
             return "About"
         default:
             return nil

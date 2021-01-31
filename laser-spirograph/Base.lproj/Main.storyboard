@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,24 +16,24 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ine-yq-PlL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="786"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-eS-Moq" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
-                                        <rect key="frame" x="93" y="0.0" width="414" height="414"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="XtC-eS-Moq" secondAttribute="height" multiplier="1:1" id="2Va-rr-Gwb"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-hZ-035">
-                                        <rect key="frame" x="126.5" y="422" width="347" height="25"/>
+                                        <rect key="frame" x="83.5" y="422" width="247" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GK3-9v-St7" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="7YM-ao-MPe"/>
@@ -45,7 +47,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcJ-IS-NVL" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
-                                                <rect key="frame" x="148.5" y="0.0" width="50" height="25"/>
+                                                <rect key="frame" x="98.5" y="0.0" width="50" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="HuW-jI-bJw"/>
@@ -59,7 +61,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5m-RT-IIf" customClass="LSCircleButton" customModule="laser_spirograph" customModuleProvider="target">
-                                                <rect key="frame" x="297" y="0.0" width="50" height="25"/>
+                                                <rect key="frame" x="197" y="0.0" width="50" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="0qe-Wm-z5K"/>
@@ -75,7 +77,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MwB-2R-Yc4" customClass="LSMultisliderView" customModule="laser_spirograph" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="455" width="480" height="113"/>
+                                        <rect key="frame" x="41.5" y="480" width="331" height="306"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -110,15 +112,15 @@
             <objects>
                 <tableViewController id="iHj-9X-cxT" customClass="SettingsTableViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1n6-Rz-1iv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="9at-lR-4zP">
-                                <rect key="frame" x="0.0" y="28" width="600" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9at-lR-4zP" id="TzD-nz-RTl">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -135,25 +137,75 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="1Rb-sx-G4Z" kind="show" identifier="ShowSpiralColorViewController" id="i5F-0Q-25O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIe-YV-9t2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="19" y="1580"/>
+        </scene>
+        <!--Spiral Color-->
+        <scene sceneID="fgv-Y1-ylk">
+            <objects>
+                <viewController id="1Rb-sx-G4Z" customClass="SpiralColorViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FD7-bp-cGT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="stS-mV-CVj">
+                                <rect key="frame" x="16" y="72" width="382" height="720"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kJP-AE-xBx">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LSColorChipCollectionView" id="ucv-rl-cwh" customClass="LSColorChipCollectionViewCell" customModule="laser_spirograph" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fgh-4D-35L">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1GX-hD-YcI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="stS-mV-CVj" firstAttribute="top" secondItem="1GX-hD-YcI" secondAttribute="top" constant="16" id="j5n-U8-RDW"/>
+                            <constraint firstItem="stS-mV-CVj" firstAttribute="leading" secondItem="1GX-hD-YcI" secondAttribute="leading" constant="16" id="m2Z-GD-sfI"/>
+                            <constraint firstItem="1GX-hD-YcI" firstAttribute="trailing" secondItem="stS-mV-CVj" secondAttribute="trailing" constant="16" id="rA3-wj-Tla"/>
+                            <constraint firstItem="1GX-hD-YcI" firstAttribute="bottom" secondItem="stS-mV-CVj" secondAttribute="bottom" constant="16" id="tww-P2-hRr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Spiral Color" id="8Oo-w9-zQL"/>
+                    <connections>
+                        <outlet property="collectionView" destination="stS-mV-CVj" id="Z5Z-Bs-osn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1N-GG-Shd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928" y="1580"/>
         </scene>
         <!--Load Spiral-->
         <scene sceneID="UEn-Tt-Jee">
             <objects>
                 <tableViewController id="3yV-nG-00j" customClass="SpiralsTableViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gY8-4g-Yt5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParameterSetCell" id="Nlj-Vc-qhQ" customClass="LSParameterSetCell" customModule="laser_spirograph" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nlj-Vc-qhQ" id="5kM-z9-We0">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -183,30 +235,30 @@
             <objects>
                 <viewController id="g84-Xl-wGz" customClass="SpiralDetailViewController" customModule="laser_spirograph" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Sg-Qz-rN8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUw-C9-2lP">
-                                <rect key="frame" x="0.0" y="56" width="600" height="524"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TyD-Gz-d3A">
-                                        <rect key="frame" x="16" y="16" width="568" height="762"/>
+                                        <rect key="frame" x="16" y="16" width="382" height="576"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thm-a5-kED" customClass="LSCanvas" customModule="laser_spirograph" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="568" height="568"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="thm-a5-kED" secondAttribute="height" multiplier="1:1" id="Ofx-nl-nzp"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name It" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7gy-HW-YAt">
-                                                <rect key="frame" x="0.0" y="584" width="568" height="34"/>
+                                                <rect key="frame" x="0.0" y="398" width="382" height="34"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFb-Fs-Lgw" customClass="LSParameterStepperContainer" customModule="laser_spirograph" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="634" width="568" height="128"/>
+                                                <rect key="frame" x="0.0" y="448" width="382" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
