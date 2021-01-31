@@ -75,8 +75,8 @@
 		C23193A025BD024D00D77239 /* LSGifBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSGifBuilder.swift; sourceTree = "<group>"; };
 		C2444E11258D34C200886845 /* LSSpiralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSSpiralController.swift; sourceTree = "<group>"; };
 		C2444E1B258D4A8300886845 /* LSParameterSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LSParameterSetCell.swift; path = "/Users/JulianTigler/git/laser-spirograph/laser-spirograph/views/LSParameterSetCell.swift"; sourceTree = "<absolute>"; };
-		C25352E925C74954005A2E4C /* LSColorProvider+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSColorProvider+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		C25352EA25C74954005A2E4C /* LSColorProvider+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSColorProvider+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		C25352E925C74954005A2E4C /* LSColorProvider+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "LSColorProvider+CoreDataClass.swift"; path = "laser-spirograph/models/core-data/LSColorProvider+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		C25352EA25C74954005A2E4C /* LSColorProvider+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "LSColorProvider+CoreDataProperties.swift"; path = "laser-spirograph/models/core-data/LSColorProvider+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		C25352F625C7572F005A2E4C /* ColorValueTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValueTransformer.swift; sourceTree = "<group>"; };
 		C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCircleCombiner.swift; sourceTree = "<group>"; };
 		C26009D72582BA2E00278867 /* LSMultisliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSMultisliderView.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		C2C48445257710E600F17D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2C4844C257711E000F17D7D /* LSCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSCanvas.swift; sourceTree = "<group>"; };
 		C2C484582577645100F17D7D /* Parameterizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameterizable.swift; sourceTree = "<group>"; };
-		C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSParameterSet+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "LSParameterSet+CoreDataClass.swift"; path = "laser-spirograph/models/core-data/LSParameterSet+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		C2DA402F258AD0FC00293577 /* UIAlertController+CommonAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+CommonAlerts.swift"; sourceTree = "<group>"; };
 		C2DA4035258ADB8500293577 /* SpiralsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralsTableViewController.swift; sourceTree = "<group>"; };
 		C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSConstantFunction.swift; sourceTree = "<group>"; };
@@ -138,6 +138,18 @@
 				4FD09EEF34298BB782783FDC /* Pods-laser-spirograph-tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C25352FC25C75A52005A2E4C /* core-data */ = {
+			isa = PBXGroup;
+			children = (
+				C25352F625C7572F005A2E4C /* ColorValueTransformer.swift */,
+				C25352E925C74954005A2E4C /* LSColorProvider+CoreDataClass.swift */,
+				C25352EA25C74954005A2E4C /* LSColorProvider+CoreDataProperties.swift */,
+				C2C2335325897D2300CA5E44 /* LSDataModel.xcdatamodeld */,
+				C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */,
+			);
+			path = "core-data";
 			sourceTree = "<group>";
 		};
 		C268C44D25AB031B0088981F /* settings */ = {
@@ -198,16 +210,12 @@
 		C2C484602577659F00F17D7D /* models */ = {
 			isa = PBXGroup;
 			children = (
-				C25352F625C7572F005A2E4C /* ColorValueTransformer.swift */,
+				C25352FC25C75A52005A2E4C /* core-data */,
 				C268C44925AB030A0088981F /* EmailComposer.swift */,
 				C204ED1E25805CAC0024F693 /* LSCircle.swift */,
 				C2559A62258455BE00CB95BB /* LSCircleCombiner.swift */,
-				C25352E925C74954005A2E4C /* LSColorProvider+CoreDataClass.swift */,
-				C25352EA25C74954005A2E4C /* LSColorProvider+CoreDataProperties.swift */,
 				C2DA9A5425830ACA00BE07B9 /* LSConstantFunction.swift */,
-				C2C2335325897D2300CA5E44 /* LSDataModel.xcdatamodeld */,
 				C23193A025BD024D00D77239 /* LSGifBuilder.swift */,
-				C2DA400D258AC47F00293577 /* LSParameterSet+CoreDataClass.swift */,
 				C2C484582577645100F17D7D /* Parameterizable.swift */,
 				C2DEAC2B2593D7A400FF153C /* LSSvgPath.swift */,
 				C2A2C1792594290400662D1D /* LSSvgExporter.swift */,
