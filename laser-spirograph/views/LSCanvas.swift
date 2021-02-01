@@ -30,7 +30,7 @@ class LSCanvas: UIView {
     
     private var filledLogo: UIImage? {
         if _filledLogo == nil {
-            _filledLogo = UIImage(named: "logo-filled")
+            _filledLogo = UIImage(named: "logo-filled")?.withRenderingMode(.alwaysTemplate)
         }
         return _filledLogo
     }
@@ -148,10 +148,11 @@ class LSCanvas: UIView {
             backgroundColor = previousBackgroundColor
             
             guard let filledLogo = filledLogo else { return }
+            tintColor.setFill()
             let logoWidth = canvasRadius / 2
             let logoHeight = logoWidth * (filledLogo.size.height / filledLogo.size.width)
             let logoRect = CGRect(x: bounds.maxX - logoWidth, y: bounds.maxY - logoHeight, width: logoWidth, height: logoHeight)
-            filledLogo.draw(in: logoRect, blendMode: .normal, alpha: 0.5)
+            filledLogo.draw(in: logoRect, blendMode: .normal, alpha: 0.75)
         }
     }
 }
