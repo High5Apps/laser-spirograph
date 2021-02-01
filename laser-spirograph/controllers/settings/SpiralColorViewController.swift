@@ -16,10 +16,11 @@ class SpiralColorViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private lazy var colors: [UIColor] = Self.defaultColors
+    private var colors = [UIColor]()
     
     private static let itemsPerRow = 4
     private static let margin: CGFloat = 16
+    private static let nullColor: UIColor = .black
     private static let defaultColors: [UIColor] = [
         UIColor.LSColors.Green532Nanometers,
         UIColor.LSColors.Red638Nanometers,
@@ -34,6 +35,9 @@ class SpiralColorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        colors.append(contentsOf: Self.defaultColors)
+        colors.append(.secondarySystemBackground)
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -65,6 +69,21 @@ class SpiralColorViewController: UIViewController {
         flowLayout.minimumLineSpacing = Self.margin
         flowLayout.minimumInteritemSpacing = Self.margin
     }
+    
+    private func onSelectedColor(_ color: UIColor) {
+        view.window?.tintColor = color
+
+        guard let context = managedObjectContext else { return }
+        let sharedColorProvider = LSColorProvider.shared(context: context)
+        sharedColorProvider.primaryColor = color
+        sharedColorProvider.save()
+    }
+    
+    private func addColor(_ color: UIColor) {
+        let itemIndex = colors.count - 1
+        colors.insert(color, at: itemIndex)
+        collectionView.insertItems(at: [IndexPath(item: itemIndex, section: 0)])
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -79,20 +98,46 @@ extension SpiralColorViewController: UICollectionViewDataSource {
         
         if let colorChip = item as? LSColorChipCollectionViewCell {
             colorChip.color = colors[indexPath.item]
+            
+            let isLastItem = (indexPath.item == colors.count - 1)
+            colorChip.icon = isLastItem ? .plus : nil
         }
                         
         return item
     }
 }
 
+// MARK: UICollectionViewDelegate
+
 extension SpiralColorViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard let chip = collectionView.cellForItem(at: indexPath) as? LSColorChipCollectionViewCell else { return true }
+        if chip.icon == .plus {
+            let colorPickerVC = UIColorPickerViewController()
+            colorPickerVC.supportsAlpha = false
+            colorPickerVC.selectedColor = Self.nullColor
+            colorPickerVC.delegate = self
+            present(colorPickerVC, animated: true)
+        }
+        
+        return chip.icon == .none
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedColor = colors[indexPath.item]
-        view.window?.tintColor = selectedColor
+        onSelectedColor(selectedColor)
+    }
+}
 
-        guard let context = managedObjectContext else { return }
-        let sharedColorProvider = LSColorProvider.shared(context: context)
-        sharedColorProvider.primaryColor = selectedColor
-        sharedColorProvider.save()
+// MARK: UIColorPickerViewControllerDelegate
+
+extension SpiralColorViewController: UIColorPickerViewControllerDelegate {
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        let selectedColor = viewController.selectedColor
+        guard selectedColor != Self.nullColor else { return }
+
+        addColor(selectedColor)
+        collectionView.selectItem(at: IndexPath(item: colors.count - 2, section: 0), animated: true, scrollPosition: [])
+        onSelectedColor(selectedColor)
     }
 }
